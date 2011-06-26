@@ -2,7 +2,7 @@ module PowerIQ
 
   module Configuration
     VALID_OPTIONS_KEYS = [
-          :user,
+          :username,
           :password,
           :endpoint].freeze
     attr_accessor *VALID_OPTIONS_KEYS

@@ -7,6 +7,7 @@ require 'active_support/core_ext'
 
 require 'poweriq/configuration'
 require 'poweriq/resource_attribute'
+require 'poweriq/resource_action'
 require 'poweriq/resource'
 require 'poweriq/asset_strip'
 
