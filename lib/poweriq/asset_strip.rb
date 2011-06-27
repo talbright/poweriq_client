@@ -7,8 +7,7 @@ module PowerIQ
      resource_action :update
      
      resource_accessor :name,:pdu_id,:state,:created_at,:updated_at,:ordinal
-   
+      
   end
   
 end
-

@@ -1,11 +1,10 @@
 module PowerIQ
   class Resource
     include ActiveModel::Serializers::JSON
-    #extend ActiveModel::Callbacks
-    include ActiveSupport::Callbacks
+    extend ActiveModel::Callbacks
     extend ActiveModel::Naming
     include ResourceAttribute
-    include ResourceAction
+    include ResourceAction::Actions
     attr_accessor :attributes
     attr_reader :request
     attr_reader :response
