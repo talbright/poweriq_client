@@ -1,16 +1,17 @@
-module PowerIQ
-  class Resource
+module Resource
+  class Base
     include ActiveModel::Serializers::JSON
     extend ActiveModel::Callbacks
     extend ActiveModel::Naming
-    include ResourceAttribute
-    include ResourceAction::Actions
+    include Resource::Attribute
+    include Resource::Action
     attr_accessor :attributes
     attr_reader :request
     attr_reader :response
     attr_accessor :name
     attr_reader :errors
     resource_accessor :id
+    cattr_accessor :endpoint
     
     def initialize(attributes = {})
       @attributes = attributes.with_indifferent_access
@@ -25,6 +26,14 @@ module PowerIQ
       return base.underscore
     end
 
+    def endpoint
+      return @endpoint || self.class.endpoint
+    end
+
+    def endpoint=(endpoint)
+      @endpoint = endpoint
+    end
+    
     # https://github.com/rails/rails/blob/master/activemodel/lib/active_model/errors.rb
     def validate!
     end

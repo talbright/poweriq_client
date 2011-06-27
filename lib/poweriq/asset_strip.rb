@@ -1,6 +1,6 @@
 module PowerIQ
 
-  class AssetStrip < Resource
+  class AssetStrip < Resource::Base
      
      resource_action :index
      resource_action :show

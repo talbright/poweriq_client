@@ -1,61 +1,65 @@
-module ResourceAction
+module Resource
 
-  module IndexAction
-    def index(*)
-      run_callbacks(:index) do
-        self.default_action_wrapper(:collection,:method=>:get)
-        if(self.validate_response)
-          self.listify_response
+  module BaseActions
+    
+    module IndexAction
+      def index(*)
+        run_callbacks(:index) do
+          self.default_action_wrapper(:collection,:method=>:get)
+          if(self.validate_response)
+            self.listify_response
+          end
         end
       end
     end
-  end
 
-  module ShowAction
-    def show(*)
-      run_callbacks(:show) do
-        self.default_action_wrapper(:member,:method=>:get)
-        if(self.validate_response)
-          self.merge_response
+    module ShowAction
+      def show(*)
+        run_callbacks(:show) do
+          self.default_action_wrapper(:member,:method=>:get)
+          if(self.validate_response)
+            self.merge_response
+          end
         end
       end
     end
-  end
 
-  module CreateAction
-    def create(*)
-      run_callbacks(:create) do
-        self.default_action_wrapper(:collection,:method=>:post,:body=>self.as_json)
-        if(self.validate_response)
-          self.merge_response
+    module CreateAction
+      def create(*)
+        run_callbacks(:create) do
+          self.default_action_wrapper(:collection,:method=>:post,:body=>self.as_json)
+          if(self.validate_response)
+            self.merge_response
+          end
         end
       end
     end
-  end
 
-  module UpdateAction
-    def update(*)
-      run_callbacks(:update) do
-        self.default_action_wrapper(:member,:method=>:put,:body=>self.as_json)        
-        if(self.validate_response)
-          self.merge_response
+    module UpdateAction
+      def update(*)
+        run_callbacks(:update) do
+          self.default_action_wrapper(:member,:method=>:put,:body=>self.as_json)        
+          if(self.validate_response)
+            self.merge_response
+          end
         end
       end
     end
-  end
 
-  module DeleteAction
-    def delete(*)
-      run_callbacks(:delete) do
-        self.default_action_wrapper(:member,:method=>:delete,:body=>self.as_json)        
-        if(self.validate_response)
-          self.merge_response
+    module DeleteAction
+      def delete(*)
+        run_callbacks(:delete) do
+          self.default_action_wrapper(:member,:method=>:delete,:body=>self.as_json)        
+          if(self.validate_response)
+            self.merge_response
+          end
         end
       end
     end
-  end
+  
+  end # BaseActions
           
-  module Actions
+  module Action
     
     def self.included(base)
       base.extend(ClassMethods)
@@ -65,7 +69,7 @@ module ResourceAction
       def resource_action(*args)
         action_name = args.first
         define_model_callbacks action_name
-        self.send(:include,"ResourceAction::#{action_name.to_s.camelize}Action".constantize)      
+        self.send(:include,"Resource::BaseActions::#{action_name.to_s.camelize}Action".constantize)      
       end
     end
   
@@ -103,15 +107,15 @@ module ResourceAction
       url = self.create_action_route(type)
       @request = self.create_action_request(url,options)
       @response = self.execute_action_request(@request)
-      puts "response: #{@response.inspect}"
+      #puts "response: #{@response.inspect}"
     end
   
     def create_action_route(type,format="json")
       route = case type.to_s
       when "member"
-        "#{PowerIQ.endpoint}/#{self.resource_name(true)}/#{self.id}.#{format}"
+        "#{self.endpoint}/#{self.resource_name(true)}/#{self.id}.#{format}"
       when "collection"
-        "#{PowerIQ.endpoint}/#{self.resource_name(true)}.#{format}"
+        "#{self.endpoint}/#{self.resource_name(true)}.#{format}"
       end
       return route
     end
@@ -130,6 +134,6 @@ module ResourceAction
       return request.response
     end
     
-  end # Actions
+  end # Action
     
-end # ResourceAction
+end # Resource
