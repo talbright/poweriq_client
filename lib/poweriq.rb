@@ -4,8 +4,6 @@ require 'typhoeus'
 require 'active_model'
 require 'active_support/core_ext'
 
-# require 'yajl'
-
 require 'poweriq/resource_attribute'
 require 'poweriq/resource_action'
 require 'poweriq/resource'

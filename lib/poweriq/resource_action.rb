@@ -27,7 +27,7 @@ module Resource
     module CreateAction
       def create(*)
         run_callbacks(:create) do
-          self.default_action_wrapper(:collection,:method=>:post,:body=>self.as_json)
+          self.default_action_wrapper(:collection,:method=>:post,:body=>self.json_encode)
           if(self.validate_response)
             self.merge_response
           end
@@ -38,7 +38,7 @@ module Resource
     module UpdateAction
       def update(*)
         run_callbacks(:update) do
-          self.default_action_wrapper(:member,:method=>:put,:body=>self.as_json)        
+          self.default_action_wrapper(:member,:method=>:put,:body=>self.json_encode)        
           if(self.validate_response)
             self.merge_response
           end
@@ -49,7 +49,7 @@ module Resource
     module DeleteAction
       def delete(*)
         run_callbacks(:delete) do
-          self.default_action_wrapper(:member,:method=>:delete,:body=>self.as_json)        
+          self.default_action_wrapper(:member,:method=>:delete,:body=>self.json_encode)        
           if(self.validate_response)
             self.merge_response
           end
@@ -73,6 +73,10 @@ module Resource
       end
     end
   
+    def json_encode
+      ActiveSupport::JSON.encode(self.as_json)
+    end
+    
     def validate_response
       success = false
       if response.success?
@@ -107,7 +111,8 @@ module Resource
       url = self.create_action_route(type)
       @request = self.create_action_request(url,options)
       @response = self.execute_action_request(@request)
-      #puts "response: #{@response.inspect}"
+      puts "request: #{@request.inspect}"
+      puts "response: #{@response.inspect}"
     end
   
     def create_action_route(type,format="json")
@@ -124,6 +129,7 @@ module Resource
       options.merge!(
       :username => PowerIQ.username, 
       :password => PowerIQ.password, 
+      :headers => {"Content-Type" => "application/json"},
       :disable_ssl_peer_verification => true)
       return Typhoeus::Request.new(url,options)
     end

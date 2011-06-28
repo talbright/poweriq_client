@@ -19,4 +19,10 @@ describe PowerIQ::AssetStrip do
     a.index
   end
   
+  it "should perform action 'update'" do
+    a = PowerIQ::AssetStrip.new(:id=>1)
+    a.name = "name #{Time.now}"
+    a.update
+  end
+  
 end
