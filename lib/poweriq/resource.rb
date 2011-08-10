@@ -11,7 +11,13 @@ module Resource
     attr_accessor :name
     attr_reader :errors
     resource_accessor :id
-    cattr_accessor :endpoint
+    
+    class << self
+      attr_accessor :endpoint,:default_endpoint
+      def endpoint
+        @endpoint || self.default_endpoint
+      end
+    end
     
     def initialize(attributes = {})
       @attributes = attributes.with_indifferent_access
@@ -25,17 +31,9 @@ module Resource
       end
       return base.underscore
     end
-
-    def endpoint
-      return @endpoint || self.class.endpoint
-    end
-
-    def endpoint=(endpoint)
-      @endpoint = endpoint
-    end
     
-    # https://github.com/rails/rails/blob/master/activemodel/lib/active_model/errors.rb
     def validate!
+      # https://github.com/rails/rails/blob/master/activemodel/lib/active_model/errors.rb
     end
 
     def read_attribute_for_validation(attr)
@@ -49,24 +47,6 @@ module Resource
     def self.lookup_ancestors
       [self]
     end
-    
-    # TODO figure out how to allow multiple clients (eg to handle multiple instances of Power IQ)
-    # Sets client for +all+ classes that inherit from Resource
-    # PowerIQ::Resource.client = foo
-    # PowerIQ::AssetStrip.client => foo
-    # PowerIQ::AssetStrip.client = bar
-    # PowerIQ::Resource.cient => bar
-    # cattr_accessor :client
-    # def initialize(client=nil)
-    #   @client = client
-    # end
-    # # client can be overriden 
-    # def client
-    #   return @client || self.class.client
-    # end
-    # def client=(aclient)
-    #   @client = aclient
-    # end
     
   end
 end

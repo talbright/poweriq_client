@@ -108,27 +108,28 @@ module Resource
     end
   
     def default_action_wrapper(type,options)
-      url = self.create_action_route(type)
+      url = self.create_action_route(type,options[:action])
       @request = self.create_action_request(url,options)
       @response = self.execute_action_request(@request)
       puts "request: #{@request.inspect}"
       puts "response: #{@response.inspect}"
     end
   
-    def create_action_route(type,format="json")
+    def create_action_route(type,action=nil,format="json")
+      action_path = ( action.nil? ? "" : "/#{action}" )
       route = case type.to_s
       when "member"
-        "#{self.endpoint}/#{self.resource_name(true)}/#{self.id}.#{format}"
+        "#{self.endpoint.host}/#{self.resource_name(true)}/#{self.id}#{action_path}.#{format}"
       when "collection"
-        "#{self.endpoint}/#{self.resource_name(true)}.#{format}"
+        "#{self.endpoint.host}/#{self.resource_name(true)}#{action_path}.#{format}"
       end
       return route
     end
   
     def create_action_request(url,options)
       options.merge!(
-      :username => PowerIQ.username, 
-      :password => PowerIQ.password, 
+      :username => self.endpoint.username, 
+      :password => self.endpoint.password, 
       :headers => {"Content-Type" => "application/json"},
       :disable_ssl_peer_verification => true)
       return Typhoeus::Request.new(url,options)

@@ -1,9 +1,7 @@
 require 'spec_helper'
 
 PowerIQ.configure do |config|
-  config.endpoint = "https://vm141/api/v2"
-  config.username = "admin"
-  config.password = "raritan"
+  config.endpoint = PowerIQ::Endpoint.new("https://vm141/api/v2","admin","raritan")
 end
 
 describe PowerIQ::AssetStrip do
