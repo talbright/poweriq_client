@@ -8,7 +8,7 @@ require 'poweriq/resource_attribute'
 require 'poweriq/resource_action'
 require 'poweriq/resource'
 require 'poweriq/asset_strip'
-
+require 'poweriq/endpoint'
 require 'poweriq/configuration'
 
 module PowerIQ
