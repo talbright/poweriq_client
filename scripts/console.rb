@@ -6,7 +6,7 @@ require 'irb'
 require 'irb/completion'
 
 PowerIQ.configure do |config|
-  config.endpoint = PowerIQ::Endpoint.new("https://vm141/api/v2","admin","raritan")
+  config.endpoint = ResourceAction::Endpoint.new("https://vm141/api/v2","admin","raritan")
 end
 
 IRB.start

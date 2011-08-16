@@ -1,4 +1,4 @@
-module PowerIQ
+module ResourceAction
   class Endpoint
     attr_accessor :host,:user,:password
     def initialize(host=nil,user=nil,password=nil)

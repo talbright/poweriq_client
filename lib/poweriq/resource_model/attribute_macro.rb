@@ -1,6 +1,6 @@
-module Resource
+module ResourceModel
   
-  module Attribute
+  module AttributeMacro
   
     def self.included(base)
       base.extend(ClassMethods)

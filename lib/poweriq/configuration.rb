@@ -9,7 +9,7 @@ module PowerIQ
     attr_accessor *VALID_OPTIONS_KEYS
     def configure
       yield self
-      Resource::Base.default_endpoint = self.endpoint
+      ResourceModel::Base.default_endpoint = self.endpoint
       if(self.logger.nil?)
         self.logger =  Logger.new(STDOUT)
         self.logger.level = Logger::WARN
