@@ -7,9 +7,8 @@ require 'poweriq/resource_action'
 require 'poweriq/resource_model'
 require 'poweriq/configuration'
 
-require 'poweriq/asset_strip'
-# require 'poweriq/rack_unit'
-# require 'poweriq/edm_resource'
+require 'poweriq/models'
+require 'poweriq/actions'
 
 module PowerIQ
   extend Configuration

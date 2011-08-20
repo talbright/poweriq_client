@@ -14,6 +14,8 @@ module PowerIQ
         self.logger =  Logger.new(STDOUT)
         self.logger.level = Logger::WARN
       end
+      ResourceAction.logger = self.logger
+      ResourceModel.logger = self.logger
     end
   end
   

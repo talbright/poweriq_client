@@ -10,12 +10,7 @@ module ResourceAction
       module ClassMethods
         def index(options={})
           action = ResourceAction::Base.new(self,{:type=>:collection,:action=>:index,:method=>:get})
-          action.execute(*args)
-          if(action.success?)
-            # Parse results of body and create ResourceModels as appropriate...
-          else
-            # raise
-          end
+          action.execute(options)
         end
       end
       
@@ -24,12 +19,7 @@ module ResourceAction
     module ShowAction
       def show(options={})
         action = ResourceAction::Base.new(self,{:type=>:member,:action=>:update,:method=>:put})
-        action.execute(*args)
-        if(action.success?)
-          # Parse results of body and create ResourceModels as appropriate...
-        else
-          # raise
-        end
+        action.execute(options)
       end
     end
     
