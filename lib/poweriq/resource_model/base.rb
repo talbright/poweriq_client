@@ -6,9 +6,7 @@ module ResourceModel
     include ResourceModel::AttributeMacro
     include ResourceAction::ActionMacro
 
-    attr_accessor :attributes
-    attr_accessor :last_action
-    attr_accessor :name
+    attr_accessor :attributes,:last_action,:name
     attr_reader :errors
     resource_accessor :id
     

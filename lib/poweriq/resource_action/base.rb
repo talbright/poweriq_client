@@ -8,6 +8,7 @@ module ResourceAction
     extend ActiveModel::Callbacks
     extend ActiveModel::Naming
     attr_reader :request,:resource,:url,:action,:type,:method,:format,:errors,:on_failure,:on_success
+    attr_writer :json,:model
     define_model_callbacks :success, :only => [:after, :before]
     define_model_callbacks :failure, :only => [:after, :before]
     define_model_callbacks :execute
@@ -31,6 +32,7 @@ module ResourceAction
       run_callbacks :execute do
         @url = self.create_route
         @request = self.create_request
+        @request.params = options[:params]
         self.execute_request
       end
     end
@@ -45,22 +47,6 @@ module ResourceAction
 
     def response
       @request.response unless(@request.nil?)
-    end
-
-    def success
-      run_callbacks :success do
-        if(@on_success)
-          invoke_callback(@on_success)
-        end
-      end
-    end
-
-    def failure
-      run_callbacks :failure do
-        if(@on_failure)
-          invoke_callback(@on_failure)
-        end
-      end
     end
 
     def read_attribute_for_validation(attr)
@@ -93,7 +79,7 @@ module ResourceAction
             "#{@resource.endpoint.host}/#{@resource.resource_name(true)}/#{@resource.id}#{action_path}.#{@format}"
           when "collection"
             "#{@resource.endpoint.host}/#{@resource.resource_name(true)}#{action_path}.#{@format}"
-          end
+        end
       end
 
       def create_request
@@ -127,8 +113,23 @@ module ResourceAction
         end
       end
 
+      def success
+        run_callbacks :success do
+          if(@on_success)
+            invoke_callback(@on_success)
+          end
+        end
+      end
+
+      def failure
+        run_callbacks :failure do
+          if(@on_failure)
+            invoke_callback(@on_failure)
+          end
+        end
+      end
+
       def invoke_callback(callback)
-        # For now only allow passing in a proc object
         callback.call(self)
       end
 

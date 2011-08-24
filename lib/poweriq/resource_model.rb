@@ -5,3 +5,5 @@ module ResourceModel
 end
 require 'resource_model/attribute_macro'
 require 'resource_model/base'
+require 'resource_model/model_builder'
+
