@@ -8,7 +8,7 @@ module ResourceAction
     extend ActiveModel::Callbacks
     extend ActiveModel::Naming
     attr_reader :request,:resource,:url,:action,:type,:method,:format,:errors,:on_failure,:on_success
-    attr_writer :json,:model
+    attr_accessor :json,:model
     define_model_callbacks :success, :only => [:after, :before]
     define_model_callbacks :failure, :only => [:after, :before]
     define_model_callbacks :execute
@@ -24,6 +24,7 @@ module ResourceAction
       @errors = ActiveModel::Errors.new(self)
       @on_failure = options[:on_failure]
       @on_success = options[:on_success]
+      @singular = false
     end
 
     def execute(options={})
@@ -35,6 +36,10 @@ module ResourceAction
         @request.params = options[:params]
         self.execute_request
       end
+    end
+
+    def singular?
+      @singular
     end
 
     def success?
@@ -73,12 +78,13 @@ module ResourceAction
 
       def create_route
         action_path = ( self.action.nil? || self.action == :index ? "" : "/#{self.action}" )
+        pluralize = !resource.singular?
         case @type.to_s
           when "member"
             # raise error if id nil
-            "#{@resource.endpoint.host}/#{@resource.resource_name(true)}/#{@resource.id}#{action_path}.#{@format}"
+            "#{@resource.endpoint.host}/#{@resource.resource_name(pluralize)}/#{@resource.id}#{action_path}.#{@format}"
           when "collection"
-            "#{@resource.endpoint.host}/#{@resource.resource_name(true)}#{action_path}.#{@format}"
+            "#{@resource.endpoint.host}/#{@resource.resource_name(pluralize)}#{action_path}.#{@format}"
         end
       end
 

@@ -10,14 +10,9 @@ module ResourceModel
     attr_reader :errors
     resource_accessor :id
     
-    def initialize(attributes = {})
-      @attributes = attributes.with_indifferent_access
-      @errors = ActiveModel::Errors.new(self)
-    end
-
     class << self
-      attr_accessor :default_endpoint
-      attr_writer :endpoint,:last_action
+      attr_accessor :default_endpoint,:last_action
+      attr_writer :endpoint
       def endpoint
         @endpoint || self.default_endpoint || ResourceModel::Base.default_endpoint
       end
@@ -26,12 +21,26 @@ module ResourceModel
         if(pluralize)
           base = base.pluralize
         end
-        return base.underscore
+        base.underscore
+      end
+      def singular?
+        @singular
+      end
+      def singular_model(val=true)
+        @singular = val
       end
     end
-            
+
+    singular_model false
+
+    def initialize(attributes = {})
+      @attributes = attributes.with_indifferent_access
+      @errors = ActiveModel::Errors.new(self)
+    end
+
+    ############################################################################################
     #
-    # allow transparent instance vs class operations 
+    # allow transparent instance vs class messages
     #
     def endpoint
       self.class.endpoint
@@ -40,7 +49,13 @@ module ResourceModel
     def resource_name(pluralize=false)
       self.class.resource_name(pluralize)
     end
-    
+
+    def singular?
+      self.class.singular?
+    end
+
+    ############################################################################################
+
     def validate!
       # https://github.com/rails/rails/blob/master/activemodel/lib/active_model/errors.rb
     end

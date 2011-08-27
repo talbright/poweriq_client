@@ -750,7 +750,75 @@ DELETE /api/v2/rows/:id(.:format)
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+  {"system_info":{
+    "poweriq_version":"3.1.0-8.201108171401",
+    "uuid":"5a27c1a8-7b6a-4180-9284-d700f7097a50",
+    "current_time":"2011-08-27T14:04:11Z",
+    "svn_branch":"trunk",
+    "configuration":{
+        "login_header":"Unauthorized Access Warning",
+        "login_body":"Access to this computer is prohibited unless authorized.<br/>Accessing programs or data unrelated to your job is prohibited.",
+        "session_timeout":30,
+        "px_minimum_version":"1.1.0-6684",
+        "canonical_domain":"",
+        "site_locale":"en-US",
+        "eula_accepted":true,
+        "sso_enabled":false,
+        "rss_enabled":false,
+        "rss_extra_text":"",
+        "ntp_enabled":false,
+        "time_zone":"UTC",
+        "time_zone_offset":0,
+        "temperature_unit":"C",
+        "currency":"$",
+        "data_center_custom_field_1":"Custom Field 1",
+        "data_center_custom_field_2":"Custom Field 2",
+        "device_custom_field_1":"Custom Field 1",
+        "device_custom_field_2":"Custom Field 2",
+        "snmp_version":"1/2c",
+        "enable_power_control":false,
+        "require_power_control_audit_message":false,
+        "enable_browser_power_control":false,
+        "enable_scheduled_power_control":false,
+        "enable_web_api":false,
+        "enable_event_notifications":false,
+        "smtp_server":"127.0.0.1",
+        "smtp_port":25,
+        "smtp_auth_type":"PASSWORD",
+        "smtp_username":"admin",
+        "from_email":"root@localhost",
+        "smtp_encryption_method":"SSL",
+        "pdu_label":"IP_ADDRESS",
+        "password_min_length":8,
+        "password_max_length":40,
+        "password_requires_one_lowercase":true,
+        "password_requires_one_uppercase":true,
+        "password_requires_one_numeric":true,
+        "password_requires_one_special":true,
+        "enable_web_api_user":false,
+        "enable_custom_logo":false,
+        "allow_html_portlets":false,
+        "browser_session_polling_interval":300,
+        "remote_storage_enabled":false,
+        "remote_storage_protocol":null,
+        "remote_storage_host":null,
+        "remote_storage_port":null,
+        "remote_storage_ftp_user":null,
+        "remote_storage_directory":null,
+        "remote_storage_s3_ssl_only":true,
+        "remote_storage_push_csv":false,
+        "remote_storage_push_backup":true,
+        "pdu_custom_field_1":"Custom Field 1",
+        "pdu_custom_field_2":"Custom Field 2"
+    },
+    "licensing":{
+        "device_limit":500,
+        "customer_name":"Internal Use Only",
+        "enable_events":false
+    }
+  }}
 
 ****************************************************************
 

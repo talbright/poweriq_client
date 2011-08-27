@@ -11,6 +11,7 @@ module ResourceAction
         def index(options={})
           action = ResourceAction::Base.new(self,{:type=>:collection,:action=>:index,:method=>:get})
           action.execute(options)
+          action.model
         end
       end
       
