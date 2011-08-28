@@ -1,6 +1,7 @@
 module PowerIQ
   
   class EdmResource < ResourceModel::Base
+
       resource_action :index
       resource_action :show
       resource_action :update

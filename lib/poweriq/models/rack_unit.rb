@@ -1,6 +1,6 @@
 module PowerIQ
 
-  class RackUnit < Resource::Base
+  class RackUnit < ResourceModel::Base
      
      resource_action :index
      resource_action :show
