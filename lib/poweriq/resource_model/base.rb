@@ -57,7 +57,6 @@ module ResourceModel
     ############################################################################################
 
     def replace_attributes(attributes)
-      attributes.nil?
       @attributes = if(attributes.nil?)
                       {}.with_indifferent_access
                     else
