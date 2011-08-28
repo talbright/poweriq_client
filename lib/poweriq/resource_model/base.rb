@@ -56,6 +56,15 @@ module ResourceModel
 
     ############################################################################################
 
+    def replace_attributes(attributes)
+      attributes.nil?
+      @attributes = if(attributes.nil?)
+                      {}.with_indifferent_access
+                    else
+                      attributes.with_indifferent_access
+                    end
+    end
+
     def validate!
       # https://github.com/rails/rails/blob/master/activemodel/lib/active_model/errors.rb
     end

@@ -7,40 +7,28 @@ module PowerIQ
       resource_action :delete
       resource_action :create
 
-      def move_to(*)
-        # run_callbacks(:move_to) do
-        #   self.default_action_wrapper(:member,:action=>:move_to,:method=>:get,:body=>self.json_encode)        
-        #   if(self.validate_response)
-        #     self.merge_response
-        #   end
-        # end
+      def move_to(options={})
+        action = ResourceAction::Base.new(self,{:type=>:member,:action=>:move_to,:method=>:put})
+        action.execute(options)
+        self.replace_attributes(action.model.attributes) unless(action.model.nil?)
       end
             
-      def children(*)
-        # run_callbacks(:children) do
-        #   self.default_action_wrapper(:member,:action=>:children,:method=>:get,:body=>self.json_encode)        
-        #   if(self.validate_response)
-        #     self.merge_response
-        #   end
-        # end
+      def children(options={})
+        action = ResourceAction::Base.new(self,{:type=>:member,:action=>:children,:method=>:get})
+        action.execute(options)
+        action.model
       end
-      
-      def siblings(*)
-        # run_callbacks(:siblings) do
-        #   self.default_action_wrapper(:member,:action=>:siblings,:method=>:get,:body=>self.json_encode)        
-        #   if(self.validate_response)
-        #     self.merge_response
-        #   end
-        # end
+
+      def siblings(options={})
+        action = ResourceAction::Base.new(self,{:type=>:member,:action=>:siblings,:method=>:get})
+        action.execute(options)
+        action.model
       end
-      
-      def descendents(*)
-        # run_callbacks(:descendents) do
-        #   self.default_action_wrapper(:member,:action=>:descendents,:method=>:get,:body=>self.json_encode)        
-        #   if(self.validate_response)
-        #     self.merge_response
-        #   end
-        # end
+
+      def descendants(options={})
+        action = ResourceAction::Base.new(self,{:type=>:member,:action=>:descendants,:method=>:get})
+        action.execute(options)
+        action.model
       end
       
   end
