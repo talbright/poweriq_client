@@ -752,7 +752,7 @@
 
 **JSON**:
 
-  {"system_info":{
+    {"system_info":{
     "poweriq_version":"3.1.0-8.201108171401",
     "uuid":"5a27c1a8-7b6a-4180-9284-d700f7097a50",
     "current_time":"2011-08-27T14:04:11Z",
@@ -818,7 +818,7 @@
         "customer_name":"Internal Use Only",
         "enable_events":false
     }
-  }}
+    }}
 
 ****************************************************************
 
@@ -885,7 +885,22 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"aisles":[
+        {
+            "id":2,
+            "name":"Aisle for 192.168 subnet",
+            "external_key":"Aisle -- 2",
+            "capacity":3.1415
+        },
+        {
+            "id":3,
+            "name":"Aisle for 212.179 subnet",
+            "external_key":"Aisle -- 3",
+            "capacity":3.1415
+        }
+    ]}
 
 #### POST  /api/v2/aisles(.:format)
 
@@ -901,7 +916,14 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"aisle":{
+        "id":2,
+        "name":"Aisle for 192.168 subnet",
+        "external_key":"Aisle -- 2",
+        "capacity":3.1415
+    }}
 
 #### PUT  /api/v2/aisles/:id(.:format)
 
@@ -984,7 +1006,54 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"data_centers":[
+        {
+            "id":2,
+            "name":"Data Center #1",
+            "company_name":"Unknown",
+            "contact_name":"Unknown",
+            "contact_phone":"Unknown",
+            "contact_email":"example@example.com",
+            "city":"Unknown",
+            "state":"Unknown",
+            "country":"Unknown",
+            "peak_kwh_rate":0.1,
+            "off_peak_kwh_rate":0.06,
+            "peak_begin":7.0,
+            "peak_end":19.0,
+            "co2_factor":0.6,
+            "cooling_factor":1.0,
+            "custom_field_1":null,
+            "custom_field_2":null,
+            "external_key":"Unassigned Data Center",
+            "capacity":25.5,
+            "cooling_savings":7.0
+        },
+        {
+            "id":3,
+            "name":"Data Center #2",
+            "company_name":"Unknown",
+            "contact_name":"Unknown",
+            "contact_phone":"Unknown",
+            "contact_email":"example@example.com",
+            "city":"Unknown",
+            "state":"Unknown",
+            "country":"Unknown",
+            "peak_kwh_rate":0.1,
+            "off_peak_kwh_rate":0.06,
+            "peak_begin":7.0,
+            "peak_end":19.0,
+            "co2_factor":0.6,
+            "cooling_factor":1.0,
+            "custom_field_1":null,
+            "custom_field_2":null,
+            "external_key":"Unassigned Data Center",
+            "capacity":25.5,
+            "cooling_savings":7.0
+        }
+    ]}
 
 #### POST  /api/v2/data_centers(.:format)
 
@@ -1083,7 +1152,22 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    { "floors":[
+        {
+            "id":2,
+            "name":"Floor for 192 subnet",
+            "external_key":"Floor -- 2",
+            "capacity":1.618
+        },
+        {
+            "id":3,
+            "name":"Floor for 212 subnet",
+            "external_key":"Floor -- 3",
+            "capacity":1.618
+        }
+    ]}
 
 #### POST  /api/v2/floors(.:format)
 
@@ -1100,6 +1184,13 @@
 **Params**: na
 
 **JSON**: {}
+
+    {"floor":{
+        "id":2,
+        "name":"Floor for 192 subnet",
+        "external_key":"Floor -- 2",
+        "capacity":1.618
+    }}
 
 #### PUT  /api/v2/floors/:id(.:format)
 
@@ -1146,27 +1237,491 @@
 
 #### GET  /api/v2/racks/:id/children(.:format)
 
-**Summary**: 
+**Summary**: Retrieve all the children of the rack
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"children":[
+        {
+            "pdu":{
+                "id":27,
+                "snmp3_enabled":false,
+                "snmp3_user":null,
+                "snmp3_auth_level":null,
+                "caption":"asset-mgmt-px2",
+                "description":"PX 020105",
+                "contact":"Jason Herr",
+                "proxy_index":null,
+                "requires_manual_voltage":false,
+                "configured_inlet_voltage":null,
+                "configured_outlet_voltage":null,
+                "supports_single_sign_on":true,
+                "supports_firmware_upgrades":true,
+                "supports_bulk_configuration":false,
+                "supports_outlet_power_control":false,
+                "supports_outlet_renaming":true,
+                "name":"asset-mgmt-px2",
+                "model":"PX2-1190CR",
+                "location":"Jason's Desk in Raleigh",
+                "serial_number":null,
+                "manufacturer":"Raritan",
+                "firmware_version":"2.1.5.5-25190",
+                "poller_plugin":"com.raritan.polaris.plugins.pdu.raritan.px2.PduPoller",
+                "rated_volts":"100-240V",
+                "rated_amps":"16A",
+                "rated_va":"1.6-3.8kVA",
+                "ip_address":"192.168.42.99",
+                "inline_meter":false,
+                "supports_readingsonly_poll":true,
+                "supports_data_logging":true,
+                "supports_sensor_renaming":false,
+                "default_connected_led_color":"0000ff",
+                "default_disconnected_led_color":"ff0000",
+                "dynamic_plugin_name":null,
+                "phase":"SINGLE_PHASE",
+                "user_defined_phase":false,
+                "custom_field_1":"",
+                "custom_field_2":"",
+                "reading":{
+                    "pdu":{
+                        "id":100,
+                        "reading_time":"2011-08-29T18:55:26Z",
+                        "active_power":6.0,
+                        "active_power_samples":1,
+                        "apparent_power":13.0,
+                        "apparent_power_samples":1,
+                        "watt_hour":null,
+                        "watt_hour_samples":0,
+                        "active_power_delta":null,
+                        "apparent_power_delta":null,
+                        "pdu_id":27,
+                        "max_active_power":null,
+                        "max_active_power_samples":0.0,
+                        "min_active_power":null,
+                        "min_active_power_samples":0.0,
+                        "max_apparent_power":null,
+                        "max_apparent_power_samples":0.0,
+                        "min_apparent_power":null,
+                        "min_apparent_power_samples":0.0
+                    },
+                    "lines":[],
+                    "circuit_breakers":[]
+                },
+                "health":{
+                    "overall":"Good",
+                    "connectivity":"OK",
+                    "connectivity_explanation":"Most recent poll of the target PDU was successful.",
+                    "events":"Good",
+                    "active_events_count":0
+                }
+            }
+        },
+        {
+            "device":{
+                "id":1,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 1",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 1",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":2,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 2",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 2",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":3,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 3",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 3",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":4,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 4",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 4",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":5,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 5",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 5",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":6,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 6",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 6",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":7,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 7",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 7",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":8,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 8",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 8",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        }
+    ]}
 
 #### GET  /api/v2/racks/:id/descendants(.:format)
 
-**Summary**: 
+**Summary**: Retrieve all the descendants of the rack
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"descendants":[
+        {
+            "pdu":{
+                "id":27,
+                "snmp3_enabled":false,
+                "snmp3_user":null,
+                "snmp3_auth_level":null,
+                "caption":"asset-mgmt-px2",
+                "description":"PX 020105",
+                "contact":"Jason Herr",
+                "proxy_index":null,
+                "requires_manual_voltage":false,
+                "configured_inlet_voltage":null,
+                "configured_outlet_voltage":null,
+                "supports_single_sign_on":true,
+                "supports_firmware_upgrades":true,
+                "supports_bulk_configuration":false,
+                "supports_outlet_power_control":false,
+                "supports_outlet_renaming":true,
+                "name":"asset-mgmt-px2",
+                "model":"PX2-1190CR",
+                "location":"Jason's Desk in Raleigh",
+                "serial_number":null,
+                "manufacturer":"Raritan",
+                "firmware_version":"2.1.5.5-25190",
+                "poller_plugin":"com.raritan.polaris.plugins.pdu.raritan.px2.PduPoller",
+                "rated_volts":"100-240V",
+                "rated_amps":"16A",
+                "rated_va":"1.6-3.8kVA",
+                "ip_address":"192.168.42.99",
+                "inline_meter":false,
+                "supports_readingsonly_poll":true,
+                "supports_data_logging":true,
+                "supports_sensor_renaming":false,
+                "default_connected_led_color":"0000ff",
+                "default_disconnected_led_color":"ff0000",
+                "dynamic_plugin_name":null,
+                "phase":"SINGLE_PHASE",
+                "user_defined_phase":false,
+                "custom_field_1":"",
+                "custom_field_2":"",
+                "reading":{
+                    "pdu":{
+                        "id":100,
+                        "reading_time":"2011-08-29T18:55:26Z",
+                        "active_power":6.0,
+                        "active_power_samples":1,
+                        "apparent_power":13.0,
+                        "apparent_power_samples":1,
+                        "watt_hour":null,
+                        "watt_hour_samples":0,
+                        "active_power_delta":null,
+                        "apparent_power_delta":null,
+                        "pdu_id":27,
+                        "max_active_power":null,
+                        "max_active_power_samples":0.0,
+                        "min_active_power":null,
+                        "min_active_power_samples":0.0,
+                        "max_apparent_power":null,
+                        "max_apparent_power_samples":0.0,
+                        "min_apparent_power":null,
+                        "min_apparent_power_samples":0.0
+                    },
+                    "lines":[],
+                    "circuit_breakers":[]
+                },
+                "health":{
+                    "overall":"Good",
+                    "connectivity":"OK",
+                    "connectivity_explanation":"Most recent poll of the target PDU was successful.",
+                    "events":"Good",
+                    "active_events_count":0
+                }
+            }
+        },
+        {
+            "device":{
+                "id":1,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 1",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 1",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":2,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 2",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 2",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":3,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 3",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 3",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":4,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 4",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 4",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":5,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 5",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 5",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":6,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 6",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 6",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":7,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 7",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 7",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        },
+        {
+            "device":{
+                "id":8,
+                "name":"Device for PDU 192.168.42.99 outlet outlet 8",
+                "customer":"Unknown",
+                "device_type":"Default Generated Device",
+                "power_rating":null,
+                "decommissioned":false,
+                "custom_field_1":null,
+                "custom_field_2":null,
+                "external_key":"IT Device -- 8",
+                "enable_graceful_shutdown":null,
+                "ip_address":null,
+                "shutdown_command_id":null,
+                "shutdown_wait":null,
+                "asset_tag_id":null
+            }
+        }
+    ]}
 
 #### GET  /api/v2/racks/:id/siblings(.:format)
 
-**Summary**: 
+**Summary**: Retrieve all the siblings of the rack
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {
+        "siblings":[
+            {
+                "rack": {
+                    "id":2,
+                    "name":"Rack for 192.168.42.99",
+                    "space_id":"foo space",
+                    "external_key":"Rack -- 2",
+                    "capacity":3.1415
+                }
+            },
+            {
+                "rack": {
+                    "id":3,
+                    "name":"Rack for 192.168.42.98",
+                    "space_id":"foo space",
+                    "external_key":"Rack -- 3",
+                    "capacity":3.1415
+                }
+            }
+    ]}
 
 #### PUT  /api/v2/racks/:id/move_to(.:format)
 
@@ -1182,15 +1737,77 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"racks":[
+        {
+            "id":3,
+            "name":"Rack for 192.168.43.62",
+            "space_id":null,
+            "external_key":"Rack -- 3",
+            "capacity":null
+        },
+        {
+            "id":4,
+            "name":"Rack for 192.168.43.79",
+            "space_id":null,
+            "external_key":"Rack -- 4",
+            "capacity":null
+        },
+        {
+            "id":5,
+            "name":"Rack for 192.168.43.89",
+            "space_id":null,
+            "external_key":"Rack -- 5",
+            "capacity":null
+        },
+        {
+            "id":6,
+            "name":"Rack for 192.168.43.106",
+            "space_id":null,
+            "external_key":"Rack -- 6",
+            "capacity":null
+        },
+        {
+            "id":7,
+            "name":"Rack for 192.168.43.107",
+            "space_id":null,
+            "external_key":"Rack -- 7",
+            "capacity":null
+        },
+        {
+            "id":8,
+            "name":"Rack for 192.168.43.108",
+            "space_id":null,
+            "external_key":"Rack -- 8",
+            "capacity":null
+        }
+    ]}
 
 #### POST  /api/v2/racks(.:format)
 
-**Summary**: Create a new racks
+**Summary**: Create a new racks resource
 
 **Params**: na
 
-**JSON**: {}
+**JSON (request)**:
+
+    {"rack": {
+        "name":"Rack for 192.168.42.99",
+        "space_id":"foo space",
+        "external_key":"Rack -- 2",
+        "capacity":3.1415
+    }}
+
+**JSON (response)**:
+
+    {"rack": {
+        "id":99,
+        "name":"Rack for 192.168.42.99",
+        "space_id":"foo space",
+        "external_key":"Rack -- 2",
+        "capacity":3.1415
+    }}
 
 #### GET  /api/v2/racks/:id(.:format)
 
@@ -1198,7 +1815,15 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"rack": {
+        "id":2,
+        "name":"Rack for 192.168.42.99",
+        "space_id":"foo space",
+        "external_key":"Rack -- 2",
+        "capacity":3.1415
+    }}
 
 #### PUT  /api/v2/racks/:id(.:format)
 
@@ -1206,7 +1831,15 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON (response)**:
+
+    {"rack": {
+        "id":2,
+        "name":"Rack for 192.168.42.99",
+        "space_id":"foo space",
+        "external_key":"Rack -- 2",
+        "capacity":3.1415
+    }}
 
 #### DELETE  /api/v2/racks/:id(.:format)
 
@@ -1214,7 +1847,15 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON (response)**:
+
+    {"rack": {
+        "id":2,
+        "name":"Rack for 192.168.42.99",
+        "space_id":"foo space",
+        "external_key":"Rack -- 2",
+        "capacity":3.1415
+    }}
 
 ****************************************************************
 
@@ -1281,7 +1922,22 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"rooms":[
+        {
+            "id":2,
+            "name":"Room for 192 subnet",
+            "external_key":"Room -- 2",
+            "capacity":1.618
+        },
+        {
+            "id":3,
+            "name":"Room for 212 subnet",
+            "external_key":"Room -- 3",
+            "capacity":1.618
+        }
+    ]}
 
 #### POST  /api/v2/rooms(.:format)
 
@@ -1297,7 +1953,14 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"room":{
+        "id":2,
+        "name":"Room for 192 subnet",
+        "external_key":"Room -- 2",
+        "capacity": 1.618
+    }}
 
 #### PUT  /api/v2/rooms/:id(.:format)
 
@@ -1380,7 +2043,40 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"rows":[
+        {
+            "id":2,
+            "name":"Row for 192.168.42 subnet",
+            "external_key":"Row -- 2",
+            "capacity":null
+        },
+        {
+            "id":3,
+            "name":"Row for 192.168.43 subnet",
+            "external_key":"Row -- 3",
+            "capacity":null
+        },
+        {
+            "id":4,
+            "name":"Row for 192.168.45 subnet",
+            "external_key":"Row -- 4",
+            "capacity":null
+        },
+        {
+            "id":5,
+            "name":"Row for 192.168.57 subnet",
+            "external_key":"Row -- 5",
+            "capacity":null
+        },
+        {
+            "id":6,
+            "name":"Row for 212.179.75 subnet",
+            "external_key":"Row -- 6",
+            "capacity":null
+        }
+    ]}
 
 #### POST  /api/v2/rows(.:format)
 
@@ -1396,7 +2092,14 @@
 
 **Params**: na
 
-**JSON**: {}
+**JSON**:
+
+    {"row":{
+        "id":2,
+        "name":"Row for 192.168.42 subnet",
+        "external_key":"Row -- 2",
+        "capacity":1.618
+    }}
 
 #### PUT  /api/v2/rows/:id(.:format)
 

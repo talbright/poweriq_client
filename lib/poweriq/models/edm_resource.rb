@@ -34,22 +34,30 @@ module PowerIQ
       
   end
   
-  class Aisle < EdmResource 
+  class Aisle < EdmResource
+    resource_accessor :name,:external_key,:capacity
   end
   
-  class Rack < EdmResource 
+  class Rack < EdmResource
+    resource_accessor :name,:space_id,:external_key,:capacity
   end
   
   class Row < EdmResource
+    resource_accessor :name,:external_key,:capacity
   end
   
   class Room < EdmResource
+    resource_accessor :name,:external_key,:capacity
   end
   
   class Floor < EdmResource
+    resource_accessor :name,:external_key,:capacity
   end
   
   class DataCenter < EdmResource
+    resource_accessor :name,:company_name,:contact_name,:contact_phone,:contact_email,:city,:state,:country,:peak_kwh_rate,
+            :off_peak_kwh_rate,:peak_begin,:peak_end,:co2_factor,:cooling_factor,:custom_field_1,:custom_field_2,
+            :external_key,:capacity,:cooling_savings
   end
    
   class Device < EdmResource
