@@ -1,106 +1,106 @@
 ## All Routes
 
-	GET    /api/v2/asset_strips/:asset_strip_id/rack_units(.:format)
-	GET    /api/v2/asset_strips(.:format)                           
-	GET    /api/v2/asset_strips/:id(.:format)                       
-	PUT    /api/v2/asset_strips/:id(.:format)                       
-	GET    /api/v2/circuit_breaker_readings(.:format)               
-	GET    /api/v2/circuit_breaker_readings_rollups(.:format)       
-	GET    /api/v2/devices/:device_id/outlets(.:format)             
-	GET    /api/v2/devices(.:format)                                
-	GET    /api/v2/devices/:id(.:format)                            
-	PUT    /api/v2/events/:id/clear(.:format)                       
-	PUT    /api/v2/events/clear_batch(.:format)                     
-	GET    /api/v2/events(.:format)                                 
-	GET    /api/v2/events/:id(.:format)                             
-	GET    /api/v2/jobs/:job_id/messages(.:format)                  
-	GET    /api/v2/jobs/:id(.:format)                               
-	GET    /api/v2/job_messages(.:format)                           
-	GET    /api/v2/job_messages/:id(.:format)                       
-	GET    /api/v2/line_readings(.:format)                          
-	GET    /api/v2/line_readings_rollups(.:format)                  
-	GET    /api/v2/outlets/:outlet_id/events(.:format)              
-	GET    /api/v2/outlets/:outlet_id/readings(.:format)            
-	GET    /api/v2/outlets/:outlet_id/readings_rollups(.:format)    
-	GET    /api/v2/outlets(.:format)                                
-	GET    /api/v2/outlets/:id(.:format)                            
-	GET    /api/v2/outlet_readings(.:format)                        
-	GET    /api/v2/outlet_readings_rollups(.:format)                
-	GET    /api/v2/pdus/:pdu_id/sensors(.:format)                   
-	GET    /api/v2/pdus/:pdu_id/outlets(.:format)                   
-	GET    /api/v2/pdus/:pdu_id/asset_strips(.:format)              
-	GET    /api/v2/pdus/:pdu_id/events(.:format)                    
-	GET    /api/v2/pdus/:pdu_id/readings(.:format)                  
-	GET    /api/v2/pdus/:pdu_id/readings_rollups(.:format)          
-	GET    /api/v2/pdus(.:format)                                   
-	GET    /api/v2/pdus/:id(.:format)                               
-	GET    /api/v2/pdu_readings(.:format)                           
-	GET    /api/v2/pdu_readings_rollups(.:format)                   
-	GET    /api/v2/rack_units(.:format)                             
-	GET    /api/v2/rack_units/:id(.:format)                         
-	PUT    /api/v2/rack_units/:id(.:format)                         
-	GET    /api/v2/sensors/:sensor_id/events(.:format)              
-	GET    /api/v2/sensors/:sensor_id/readings(.:format)            
-	GET    /api/v2/sensors/:sensor_id/readings_rollups(.:format)    
-	GET    /api/v2/sensors(.:format)                                
-	GET    /api/v2/sensors/:id(.:format)                            
-	GET    /api/v2/sensor_readings(.:format)                        
-	GET    /api/v2/sensor_readings_rollups(.:format)                
-	GET    /api/v2/system_info(.:format)                            
-	GET    /api/v2/aisles/:id/children(.:format)                    
-	GET    /api/v2/aisles/:id/descendants(.:format)                 
-	GET    /api/v2/aisles/:id/siblings(.:format)                    
-	PUT    /api/v2/aisles/:id/move_to(.:format)                     
-	GET    /api/v2/aisles(.:format)                                 
-	POST   /api/v2/aisles(.:format)                                 
-	GET    /api/v2/aisles/:id(.:format)                             
-	PUT    /api/v2/aisles/:id(.:format)                             
-	DELETE /api/v2/aisles/:id(.:format)                             
-	GET    /api/v2/data_centers/:id/children(.:format)              
-	GET    /api/v2/data_centers/:id/descendants(.:format)           
-	GET    /api/v2/data_centers/:id/siblings(.:format)              
-	PUT    /api/v2/data_centers/:id/move_to(.:format)               
-	GET    /api/v2/data_centers(.:format)                           
-	POST   /api/v2/data_centers(.:format)                           
-	GET    /api/v2/data_centers/:id(.:format)                       
-	PUT    /api/v2/data_centers/:id(.:format)                       
-	DELETE /api/v2/data_centers/:id(.:format)                       
-	GET    /api/v2/floors/:id/children(.:format)                    
-	GET    /api/v2/floors/:id/descendants(.:format)                 
-	GET    /api/v2/floors/:id/siblings(.:format)                    
-	PUT    /api/v2/floors/:id/move_to(.:format)                     
-	GET    /api/v2/floors(.:format)                                 
-	POST   /api/v2/floors(.:format)                                 
-	GET    /api/v2/floors/:id(.:format)                             
-	PUT    /api/v2/floors/:id(.:format)                             
-	DELETE /api/v2/floors/:id(.:format)                             
-	GET    /api/v2/racks/:id/children(.:format)                     
-	GET    /api/v2/racks/:id/descendants(.:format)                  
-	GET    /api/v2/racks/:id/siblings(.:format)                     
-	PUT    /api/v2/racks/:id/move_to(.:format)                      
-	GET    /api/v2/racks(.:format)                                  
-	POST   /api/v2/racks(.:format)                                  
-	GET    /api/v2/racks/:id(.:format)                              
-	PUT    /api/v2/racks/:id(.:format)                              
-	DELETE /api/v2/racks/:id(.:format)                              
-	GET    /api/v2/rooms/:id/children(.:format)                     
-	GET    /api/v2/rooms/:id/descendants(.:format)                  
-	GET    /api/v2/rooms/:id/siblings(.:format)                     
-	PUT    /api/v2/rooms/:id/move_to(.:format)                      
-	GET    /api/v2/rooms(.:format)                                  
-	POST   /api/v2/rooms(.:format)                                  
-	GET    /api/v2/rooms/:id(.:format)                              
-	PUT    /api/v2/rooms/:id(.:format)                              
-	DELETE /api/v2/rooms/:id(.:format)                              
-	GET    /api/v2/rows/:id/children(.:format)                      
-	GET    /api/v2/rows/:id/descendants(.:format)                   
-	GET    /api/v2/rows/:id/siblings(.:format)                      
-	PUT    /api/v2/rows/:id/move_to(.:format)                       
-	GET    /api/v2/rows(.:format)                                   
-	POST   /api/v2/rows(.:format)                                   
-	GET    /api/v2/rows/:id(.:format)                               
-	PUT    /api/v2/rows/:id(.:format)                               
-	DELETE /api/v2/rows/:id(.:format)                               
+	GET    /api/v2/asset_strips/:asset_strip_id/rack_units(.json)
+	GET    /api/v2/asset_strips(.json)                           
+	GET    /api/v2/asset_strips/:id(.json)                       
+	PUT    /api/v2/asset_strips/:id(.json)                       
+	GET    /api/v2/circuit_breaker_readings(.json)               
+	GET    /api/v2/circuit_breaker_readings_rollups(.json)       
+	GET    /api/v2/devices/:device_id/outlets(.json)             
+	GET    /api/v2/devices(.json)                                
+	GET    /api/v2/devices/:id(.json)                            
+	PUT    /api/v2/events/:id/clear(.json)                       
+	PUT    /api/v2/events/clear_batch(.json)                     
+	GET    /api/v2/events(.json)                                 
+	GET    /api/v2/events/:id(.json)                             
+	GET    /api/v2/jobs/:job_id/messages(.json)                  
+	GET    /api/v2/jobs/:id(.json)                               
+	GET    /api/v2/job_messages(.json)                           
+	GET    /api/v2/job_messages/:id(.json)                       
+	GET    /api/v2/line_readings(.json)                          
+	GET    /api/v2/line_readings_rollups(.json)                  
+	GET    /api/v2/outlets/:outlet_id/events(.json)              
+	GET    /api/v2/outlets/:outlet_id/readings(.json)            
+	GET    /api/v2/outlets/:outlet_id/readings_rollups(.json)    
+	GET    /api/v2/outlets(.json)                                
+	GET    /api/v2/outlets/:id(.json)                            
+	GET    /api/v2/outlet_readings(.json)                        
+	GET    /api/v2/outlet_readings_rollups(.json)                
+	GET    /api/v2/pdus/:pdu_id/sensors(.json)                   
+	GET    /api/v2/pdus/:pdu_id/outlets(.json)                   
+	GET    /api/v2/pdus/:pdu_id/asset_strips(.json)              
+	GET    /api/v2/pdus/:pdu_id/events(.json)                    
+	GET    /api/v2/pdus/:pdu_id/readings(.json)                  
+	GET    /api/v2/pdus/:pdu_id/readings_rollups(.json)          
+	GET    /api/v2/pdus(.json)                                   
+	GET    /api/v2/pdus/:id(.json)                               
+	GET    /api/v2/pdu_readings(.json)                           
+	GET    /api/v2/pdu_readings_rollups(.json)                   
+	GET    /api/v2/rack_units(.json)                             
+	GET    /api/v2/rack_units/:id(.json)                         
+	PUT    /api/v2/rack_units/:id(.json)                         
+	GET    /api/v2/sensors/:sensor_id/events(.json)              
+	GET    /api/v2/sensors/:sensor_id/readings(.json)            
+	GET    /api/v2/sensors/:sensor_id/readings_rollups(.json)    
+	GET    /api/v2/sensors(.json)                                
+	GET    /api/v2/sensors/:id(.json)                            
+	GET    /api/v2/sensor_readings(.json)                        
+	GET    /api/v2/sensor_readings_rollups(.json)                
+	GET    /api/v2/system_info(.json)                            
+	GET    /api/v2/aisles/:id/children(.json)                    
+	GET    /api/v2/aisles/:id/descendants(.json)                 
+	GET    /api/v2/aisles/:id/siblings(.json)                    
+	PUT    /api/v2/aisles/:id/move_to(.json)                     
+	GET    /api/v2/aisles(.json)                                 
+	POST   /api/v2/aisles(.json)                                 
+	GET    /api/v2/aisles/:id(.json)                             
+	PUT    /api/v2/aisles/:id(.json)                             
+	DELETE /api/v2/aisles/:id(.json)                             
+	GET    /api/v2/data_centers/:id/children(.json)              
+	GET    /api/v2/data_centers/:id/descendants(.json)           
+	GET    /api/v2/data_centers/:id/siblings(.json)              
+	PUT    /api/v2/data_centers/:id/move_to(.json)               
+	GET    /api/v2/data_centers(.json)                           
+	POST   /api/v2/data_centers(.json)                           
+	GET    /api/v2/data_centers/:id(.json)                       
+	PUT    /api/v2/data_centers/:id(.json)                       
+	DELETE /api/v2/data_centers/:id(.json)                       
+	GET    /api/v2/floors/:id/children(.json)                    
+	GET    /api/v2/floors/:id/descendants(.json)                 
+	GET    /api/v2/floors/:id/siblings(.json)                    
+	PUT    /api/v2/floors/:id/move_to(.json)                     
+	GET    /api/v2/floors(.json)                                 
+	POST   /api/v2/floors(.json)                                 
+	GET    /api/v2/floors/:id(.json)                             
+	PUT    /api/v2/floors/:id(.json)                             
+	DELETE /api/v2/floors/:id(.json)                             
+	GET    /api/v2/racks/:id/children(.json)                     
+	GET    /api/v2/racks/:id/descendants(.json)                  
+	GET    /api/v2/racks/:id/siblings(.json)                     
+	PUT    /api/v2/racks/:id/move_to(.json)                      
+	GET    /api/v2/racks(.json)                                  
+	POST   /api/v2/racks(.json)                                  
+	GET    /api/v2/racks/:id(.json)                              
+	PUT    /api/v2/racks/:id(.json)                              
+	DELETE /api/v2/racks/:id(.json)                              
+	GET    /api/v2/rooms/:id/children(.json)                     
+	GET    /api/v2/rooms/:id/descendants(.json)                  
+	GET    /api/v2/rooms/:id/siblings(.json)                     
+	PUT    /api/v2/rooms/:id/move_to(.json)                      
+	GET    /api/v2/rooms(.json)                                  
+	POST   /api/v2/rooms(.json)                                  
+	GET    /api/v2/rooms/:id(.json)                              
+	PUT    /api/v2/rooms/:id(.json)                              
+	DELETE /api/v2/rooms/:id(.json)                              
+	GET    /api/v2/rows/:id/children(.json)                      
+	GET    /api/v2/rows/:id/descendants(.json)                   
+	GET    /api/v2/rows/:id/siblings(.json)                      
+	PUT    /api/v2/rows/:id/move_to(.json)                       
+	GET    /api/v2/rows(.json)                                   
+	POST   /api/v2/rows(.json)                                   
+	GET    /api/v2/rows/:id(.json)                               
+	PUT    /api/v2/rows/:id(.json)                               
+	DELETE /api/v2/rows/:id(.json)                               
 
 ****************************************************************
 
@@ -108,18 +108,18 @@
 
 ### Overview
 
-	PUT    /api/v2/asset_strips/:id(.:format)                       
-	GET    /api/v2/asset_strips/:id(.:format)                       
-	GET    /api/v2/asset_strips(.:format)                           
-	GET    /api/v2/asset_strips/:asset_strip_id/rack_units(.:format)
-	PUT    /api/v2/asset_strips/:id(.:format)                       
-	GET    /api/v2/asset_strips/:id(.:format)                       
-	GET    /api/v2/asset_strips(.:format)                           
-	GET    /api/v2/asset_strips/:asset_strip_id/rack_units(.:format)
+	PUT    /api/v2/asset_strips/:id(.json)                       
+	GET    /api/v2/asset_strips/:id(.json)                       
+	GET    /api/v2/asset_strips(.json)                           
+	GET    /api/v2/asset_strips/:asset_strip_id/rack_units(.json)
+	PUT    /api/v2/asset_strips/:id(.json)                       
+	GET    /api/v2/asset_strips/:id(.json)                       
+	GET    /api/v2/asset_strips(.json)                           
+	GET    /api/v2/asset_strips/:asset_strip_id/rack_units(.json)
 
 ### Details
 
-#### GET  /api/v2/asset_strips/:asset_strip_id/rack_units(.:format)
+#### GET  /api/v2/asset_strips/:asset_strip_id/rack_units(.json)
 
 **Summary**: 
 
@@ -127,7 +127,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/asset_strips(.:format)
+#### GET  /api/v2/asset_strips(.json)
 
 **Summary**: Retrieve a list of all asset_strips
 
@@ -135,7 +135,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/asset_strips/:id(.:format)
+#### GET  /api/v2/asset_strips/:id(.json)
 
 **Summary**: Retrieve an asset_strips resource by ID
 
@@ -143,7 +143,7 @@
 
 **JSON**: {}
 
-#### PUT  /api/v2/asset_strips/:id(.:format)
+#### PUT  /api/v2/asset_strips/:id(.json)
 
 **Summary**: Update a asset_strips resource by ID
 
@@ -157,12 +157,12 @@
 
 ### Overview
 
-	GET    /api/v2/circuit_breaker_readings(.:format)               
-	GET    /api/v2/circuit_breaker_readings(.:format)               
+	GET    /api/v2/circuit_breaker_readings(.json)               
+	GET    /api/v2/circuit_breaker_readings(.json)               
 
 ### Details
 
-#### GET  /api/v2/circuit_breaker_readings(.:format)
+#### GET  /api/v2/circuit_breaker_readings(.json)
 
 **Summary**: Retrieve a list of all circuit_breaker_readings
 
@@ -176,12 +176,12 @@
 
 ### Overview
 
-	GET    /api/v2/circuit_breaker_readings_rollups(.:format)       
-	GET    /api/v2/circuit_breaker_readings_rollups(.:format)       
+	GET    /api/v2/circuit_breaker_readings_rollups(.json)       
+	GET    /api/v2/circuit_breaker_readings_rollups(.json)       
 
 ### Details
 
-#### GET  /api/v2/circuit_breaker_readings_rollups(.:format)
+#### GET  /api/v2/circuit_breaker_readings_rollups(.json)
 
 **Summary**: Retrieve a list of all circuit_breaker_readings_rollups
 
@@ -195,16 +195,16 @@
 
 ### Overview
 
-	GET    /api/v2/devices/:id(.:format)                            
-	GET    /api/v2/devices(.:format)                                
-	GET    /api/v2/devices/:device_id/outlets(.:format)             
-	GET    /api/v2/devices/:id(.:format)                            
-	GET    /api/v2/devices(.:format)                                
-	GET    /api/v2/devices/:device_id/outlets(.:format)             
+	GET    /api/v2/devices/:id(.json)                            
+	GET    /api/v2/devices(.json)                                
+	GET    /api/v2/devices/:device_id/outlets(.json)             
+	GET    /api/v2/devices/:id(.json)                            
+	GET    /api/v2/devices(.json)                                
+	GET    /api/v2/devices/:device_id/outlets(.json)             
 
 ### Details
 
-#### GET  /api/v2/devices/:device_id/outlets(.:format)
+#### GET  /api/v2/devices/:device_id/outlets(.json)
 
 **Summary**: 
 
@@ -212,7 +212,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/devices(.:format)
+#### GET  /api/v2/devices(.json)
 
 **Summary**: Retrieve a list of all devices
 
@@ -220,7 +220,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/devices/:id(.:format)
+#### GET  /api/v2/devices/:id(.json)
 
 **Summary**: Retrieve an devices resource by ID
 
@@ -234,18 +234,18 @@
 
 ### Overview
 
-	GET    /api/v2/events/:id(.:format)                             
-	GET    /api/v2/events(.:format)                                 
-	PUT    /api/v2/events/clear_batch(.:format)                     
-	PUT    /api/v2/events/:id/clear(.:format)                       
-	GET    /api/v2/events/:id(.:format)                             
-	GET    /api/v2/events(.:format)                                 
-	PUT    /api/v2/events/clear_batch(.:format)                     
-	PUT    /api/v2/events/:id/clear(.:format)                       
+	GET    /api/v2/events/:id(.json)                             
+	GET    /api/v2/events(.json)                                 
+	PUT    /api/v2/events/clear_batch(.json)                     
+	PUT    /api/v2/events/:id/clear(.json)                       
+	GET    /api/v2/events/:id(.json)                             
+	GET    /api/v2/events(.json)                                 
+	PUT    /api/v2/events/clear_batch(.json)                     
+	PUT    /api/v2/events/:id/clear(.json)                       
 
 ### Details
 
-#### PUT  /api/v2/events/:id/clear(.:format)
+#### PUT  /api/v2/events/:id/clear(.json)
 
 **Summary**: 
 
@@ -253,7 +253,7 @@
 
 **JSON**: {}
 
-#### PUT  /api/v2/events/clear_batch(.:format)
+#### PUT  /api/v2/events/clear_batch(.json)
 
 **Summary**: 
 
@@ -261,7 +261,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/events(.:format)
+#### GET  /api/v2/events(.json)
 
 **Summary**: Retrieve a list of all events
 
@@ -269,7 +269,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/events/:id(.:format)
+#### GET  /api/v2/events/:id(.json)
 
 **Summary**: Retrieve an events resource by ID
 
@@ -283,14 +283,14 @@
 
 ### Overview
 
-	GET    /api/v2/jobs/:id(.:format)                               
-	GET    /api/v2/jobs/:job_id/messages(.:format)                  
-	GET    /api/v2/jobs/:id(.:format)                               
-	GET    /api/v2/jobs/:job_id/messages(.:format)                  
+	GET    /api/v2/jobs/:id(.json)                               
+	GET    /api/v2/jobs/:job_id/messages(.json)                  
+	GET    /api/v2/jobs/:id(.json)                               
+	GET    /api/v2/jobs/:job_id/messages(.json)                  
 
 ### Details
 
-#### GET  /api/v2/jobs/:job_id/messages(.:format)
+#### GET  /api/v2/jobs/:job_id/messages(.json)
 
 **Summary**: 
 
@@ -298,7 +298,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/jobs/:id(.:format)
+#### GET  /api/v2/jobs/:id(.json)
 
 **Summary**: Retrieve an jobs resource by ID
 
@@ -312,14 +312,14 @@
 
 ### Overview
 
-	GET    /api/v2/job_messages/:id(.:format)                       
-	GET    /api/v2/job_messages(.:format)                           
-	GET    /api/v2/job_messages/:id(.:format)                       
-	GET    /api/v2/job_messages(.:format)                           
+	GET    /api/v2/job_messages/:id(.json)                       
+	GET    /api/v2/job_messages(.json)                           
+	GET    /api/v2/job_messages/:id(.json)                       
+	GET    /api/v2/job_messages(.json)                           
 
 ### Details
 
-#### GET  /api/v2/job_messages(.:format)
+#### GET  /api/v2/job_messages(.json)
 
 **Summary**: Retrieve a list of all job_messages
 
@@ -327,7 +327,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/job_messages/:id(.:format)
+#### GET  /api/v2/job_messages/:id(.json)
 
 **Summary**: Retrieve an job_messages resource by ID
 
@@ -341,12 +341,12 @@
 
 ### Overview
 
-	GET    /api/v2/line_readings(.:format)                          
-	GET    /api/v2/line_readings(.:format)                          
+	GET    /api/v2/line_readings(.json)                          
+	GET    /api/v2/line_readings(.json)                          
 
 ### Details
 
-#### GET  /api/v2/line_readings(.:format)
+#### GET  /api/v2/line_readings(.json)
 
 **Summary**: Retrieve a list of all line_readings
 
@@ -360,12 +360,12 @@
 
 ### Overview
 
-	GET    /api/v2/line_readings_rollups(.:format)                  
-	GET    /api/v2/line_readings_rollups(.:format)                  
+	GET    /api/v2/line_readings_rollups(.json)                  
+	GET    /api/v2/line_readings_rollups(.json)                  
 
 ### Details
 
-#### GET  /api/v2/line_readings_rollups(.:format)
+#### GET  /api/v2/line_readings_rollups(.json)
 
 **Summary**: Retrieve a list of all line_readings_rollups
 
@@ -379,20 +379,20 @@
 
 ### Overview
 
-	GET    /api/v2/outlets/:id(.:format)                            
-	GET    /api/v2/outlets(.:format)                                
-	GET    /api/v2/outlets/:outlet_id/readings_rollups(.:format)    
-	GET    /api/v2/outlets/:outlet_id/readings(.:format)            
-	GET    /api/v2/outlets/:outlet_id/events(.:format)              
-	GET    /api/v2/outlets/:id(.:format)                            
-	GET    /api/v2/outlets(.:format)                                
-	GET    /api/v2/outlets/:outlet_id/readings_rollups(.:format)    
-	GET    /api/v2/outlets/:outlet_id/readings(.:format)            
-	GET    /api/v2/outlets/:outlet_id/events(.:format)              
+	GET    /api/v2/outlets/:id(.json)                            
+	GET    /api/v2/outlets(.json)                                
+	GET    /api/v2/outlets/:outlet_id/readings_rollups(.json)    
+	GET    /api/v2/outlets/:outlet_id/readings(.json)            
+	GET    /api/v2/outlets/:outlet_id/events(.json)              
+	GET    /api/v2/outlets/:id(.json)                            
+	GET    /api/v2/outlets(.json)                                
+	GET    /api/v2/outlets/:outlet_id/readings_rollups(.json)    
+	GET    /api/v2/outlets/:outlet_id/readings(.json)            
+	GET    /api/v2/outlets/:outlet_id/events(.json)              
 
 ### Details
 
-#### GET  /api/v2/outlets/:outlet_id/events(.:format)
+#### GET  /api/v2/outlets/:outlet_id/events(.json)
 
 **Summary**: 
 
@@ -400,7 +400,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/outlets/:outlet_id/readings(.:format)
+#### GET  /api/v2/outlets/:outlet_id/readings(.json)
 
 **Summary**: 
 
@@ -408,7 +408,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/outlets/:outlet_id/readings_rollups(.:format)
+#### GET  /api/v2/outlets/:outlet_id/readings_rollups(.json)
 
 **Summary**: 
 
@@ -416,7 +416,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/outlets(.:format)
+#### GET  /api/v2/outlets(.json)
 
 **Summary**: Retrieve a list of all outlets
 
@@ -424,7 +424,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/outlets/:id(.:format)
+#### GET  /api/v2/outlets/:id(.json)
 
 **Summary**: Retrieve an outlets resource by ID
 
@@ -438,12 +438,12 @@
 
 ### Overview
 
-	GET    /api/v2/outlet_readings(.:format)                        
-	GET    /api/v2/outlet_readings(.:format)                        
+	GET    /api/v2/outlet_readings(.json)                        
+	GET    /api/v2/outlet_readings(.json)                        
 
 ### Details
 
-#### GET  /api/v2/outlet_readings(.:format)
+#### GET  /api/v2/outlet_readings(.json)
 
 **Summary**: Retrieve a list of all outlet_readings
 
@@ -457,12 +457,12 @@
 
 ### Overview
 
-	GET    /api/v2/outlet_readings_rollups(.:format)                
-	GET    /api/v2/outlet_readings_rollups(.:format)                
+	GET    /api/v2/outlet_readings_rollups(.json)                
+	GET    /api/v2/outlet_readings_rollups(.json)                
 
 ### Details
 
-#### GET  /api/v2/outlet_readings_rollups(.:format)
+#### GET  /api/v2/outlet_readings_rollups(.json)
 
 **Summary**: Retrieve a list of all outlet_readings_rollups
 
@@ -476,26 +476,26 @@
 
 ### Overview
 
-	GET    /api/v2/pdus/:id(.:format)                               
-	GET    /api/v2/pdus(.:format)                                   
-	GET    /api/v2/pdus/:pdu_id/readings_rollups(.:format)          
-	GET    /api/v2/pdus/:pdu_id/readings(.:format)                  
-	GET    /api/v2/pdus/:pdu_id/events(.:format)                    
-	GET    /api/v2/pdus/:pdu_id/asset_strips(.:format)              
-	GET    /api/v2/pdus/:pdu_id/outlets(.:format)                   
-	GET    /api/v2/pdus/:pdu_id/sensors(.:format)                   
-	GET    /api/v2/pdus/:id(.:format)                               
-	GET    /api/v2/pdus(.:format)                                   
-	GET    /api/v2/pdus/:pdu_id/readings_rollups(.:format)          
-	GET    /api/v2/pdus/:pdu_id/readings(.:format)                  
-	GET    /api/v2/pdus/:pdu_id/events(.:format)                    
-	GET    /api/v2/pdus/:pdu_id/asset_strips(.:format)              
-	GET    /api/v2/pdus/:pdu_id/outlets(.:format)                   
-	GET    /api/v2/pdus/:pdu_id/sensors(.:format)                   
+	GET    /api/v2/pdus/:id(.json)                               
+	GET    /api/v2/pdus(.json)                                   
+	GET    /api/v2/pdus/:pdu_id/readings_rollups(.json)          
+	GET    /api/v2/pdus/:pdu_id/readings(.json)                  
+	GET    /api/v2/pdus/:pdu_id/events(.json)                    
+	GET    /api/v2/pdus/:pdu_id/asset_strips(.json)              
+	GET    /api/v2/pdus/:pdu_id/outlets(.json)                   
+	GET    /api/v2/pdus/:pdu_id/sensors(.json)                   
+	GET    /api/v2/pdus/:id(.json)                               
+	GET    /api/v2/pdus(.json)                                   
+	GET    /api/v2/pdus/:pdu_id/readings_rollups(.json)          
+	GET    /api/v2/pdus/:pdu_id/readings(.json)                  
+	GET    /api/v2/pdus/:pdu_id/events(.json)                    
+	GET    /api/v2/pdus/:pdu_id/asset_strips(.json)              
+	GET    /api/v2/pdus/:pdu_id/outlets(.json)                   
+	GET    /api/v2/pdus/:pdu_id/sensors(.json)                   
 
 ### Details
 
-#### GET  /api/v2/pdus/:pdu_id/sensors(.:format)
+#### GET  /api/v2/pdus/:pdu_id/sensors(.json)
 
 **Summary**: 
 
@@ -503,7 +503,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/pdus/:pdu_id/outlets(.:format)
+#### GET  /api/v2/pdus/:pdu_id/outlets(.json)
 
 **Summary**: 
 
@@ -511,7 +511,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/pdus/:pdu_id/asset_strips(.:format)
+#### GET  /api/v2/pdus/:pdu_id/asset_strips(.json)
 
 **Summary**: 
 
@@ -519,7 +519,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/pdus/:pdu_id/events(.:format)
+#### GET  /api/v2/pdus/:pdu_id/events(.json)
 
 **Summary**: 
 
@@ -527,7 +527,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/pdus/:pdu_id/readings(.:format)
+#### GET  /api/v2/pdus/:pdu_id/readings(.json)
 
 **Summary**: 
 
@@ -535,7 +535,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/pdus/:pdu_id/readings_rollups(.:format)
+#### GET  /api/v2/pdus/:pdu_id/readings_rollups(.json)
 
 **Summary**: 
 
@@ -543,7 +543,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/pdus(.:format)
+#### GET  /api/v2/pdus(.json)
 
 **Summary**: Retrieve a list of all pdus
 
@@ -551,7 +551,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/pdus/:id(.:format)
+#### GET  /api/v2/pdus/:id(.json)
 
 **Summary**: Retrieve an pdus resource by ID
 
@@ -565,12 +565,12 @@
 
 ### Overview
 
-	GET    /api/v2/pdu_readings(.:format)                           
-	GET    /api/v2/pdu_readings(.:format)                           
+	GET    /api/v2/pdu_readings(.json)                           
+	GET    /api/v2/pdu_readings(.json)                           
 
 ### Details
 
-#### GET  /api/v2/pdu_readings(.:format)
+#### GET  /api/v2/pdu_readings(.json)
 
 **Summary**: Retrieve a list of all pdu_readings
 
@@ -584,12 +584,12 @@
 
 ### Overview
 
-	GET    /api/v2/pdu_readings_rollups(.:format)                   
-	GET    /api/v2/pdu_readings_rollups(.:format)                   
+	GET    /api/v2/pdu_readings_rollups(.json)                   
+	GET    /api/v2/pdu_readings_rollups(.json)                   
 
 ### Details
 
-#### GET  /api/v2/pdu_readings_rollups(.:format)
+#### GET  /api/v2/pdu_readings_rollups(.json)
 
 **Summary**: Retrieve a list of all pdu_readings_rollups
 
@@ -603,16 +603,16 @@
 
 ### Overview
 
-	PUT    /api/v2/rack_units/:id(.:format)                         
-	GET    /api/v2/rack_units/:id(.:format)                         
-	GET    /api/v2/rack_units(.:format)                             
-	PUT    /api/v2/rack_units/:id(.:format)                         
-	GET    /api/v2/rack_units/:id(.:format)                         
-	GET    /api/v2/rack_units(.:format)                             
+	PUT    /api/v2/rack_units/:id(.json)                         
+	GET    /api/v2/rack_units/:id(.json)                         
+	GET    /api/v2/rack_units(.json)                             
+	PUT    /api/v2/rack_units/:id(.json)                         
+	GET    /api/v2/rack_units/:id(.json)                         
+	GET    /api/v2/rack_units(.json)                             
 
 ### Details
 
-#### GET  /api/v2/rack_units(.:format)
+#### GET  /api/v2/rack_units(.json)
 
 **Summary**: Retrieve a list of all rack_units
 
@@ -620,7 +620,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/rack_units/:id(.:format)
+#### GET  /api/v2/rack_units/:id(.json)
 
 **Summary**: Retrieve an rack_units resource by ID
 
@@ -628,7 +628,7 @@
 
 **JSON**: {}
 
-#### PUT  /api/v2/rack_units/:id(.:format)
+#### PUT  /api/v2/rack_units/:id(.json)
 
 **Summary**: Update a rack_units resource by ID
 
@@ -642,20 +642,20 @@
 
 ### Overview
 
-	GET    /api/v2/sensors/:id(.:format)                            
-	GET    /api/v2/sensors(.:format)                                
-	GET    /api/v2/sensors/:sensor_id/readings_rollups(.:format)    
-	GET    /api/v2/sensors/:sensor_id/readings(.:format)            
-	GET    /api/v2/sensors/:sensor_id/events(.:format)              
-	GET    /api/v2/sensors/:id(.:format)                            
-	GET    /api/v2/sensors(.:format)                                
-	GET    /api/v2/sensors/:sensor_id/readings_rollups(.:format)    
-	GET    /api/v2/sensors/:sensor_id/readings(.:format)            
-	GET    /api/v2/sensors/:sensor_id/events(.:format)              
+	GET    /api/v2/sensors/:id(.json)                            
+	GET    /api/v2/sensors(.json)                                
+	GET    /api/v2/sensors/:sensor_id/readings_rollups(.json)    
+	GET    /api/v2/sensors/:sensor_id/readings(.json)            
+	GET    /api/v2/sensors/:sensor_id/events(.json)              
+	GET    /api/v2/sensors/:id(.json)                            
+	GET    /api/v2/sensors(.json)                                
+	GET    /api/v2/sensors/:sensor_id/readings_rollups(.json)    
+	GET    /api/v2/sensors/:sensor_id/readings(.json)            
+	GET    /api/v2/sensors/:sensor_id/events(.json)              
 
 ### Details
 
-#### GET  /api/v2/sensors/:sensor_id/events(.:format)
+#### GET  /api/v2/sensors/:sensor_id/events(.json)
 
 **Summary**: 
 
@@ -663,7 +663,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/sensors/:sensor_id/readings(.:format)
+#### GET  /api/v2/sensors/:sensor_id/readings(.json)
 
 **Summary**: 
 
@@ -671,7 +671,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/sensors/:sensor_id/readings_rollups(.:format)
+#### GET  /api/v2/sensors/:sensor_id/readings_rollups(.json)
 
 **Summary**: 
 
@@ -679,7 +679,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/sensors(.:format)
+#### GET  /api/v2/sensors(.json)
 
 **Summary**: Retrieve a list of all sensors
 
@@ -687,7 +687,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/sensors/:id(.:format)
+#### GET  /api/v2/sensors/:id(.json)
 
 **Summary**: Retrieve an sensors resource by ID
 
@@ -701,12 +701,12 @@
 
 ### Overview
 
-	GET    /api/v2/sensor_readings(.:format)                        
-	GET    /api/v2/sensor_readings(.:format)                        
+	GET    /api/v2/sensor_readings(.json)                        
+	GET    /api/v2/sensor_readings(.json)                        
 
 ### Details
 
-#### GET  /api/v2/sensor_readings(.:format)
+#### GET  /api/v2/sensor_readings(.json)
 
 **Summary**: Retrieve a list of all sensor_readings
 
@@ -720,12 +720,12 @@
 
 ### Overview
 
-	GET    /api/v2/sensor_readings_rollups(.:format)                
-	GET    /api/v2/sensor_readings_rollups(.:format)                
+	GET    /api/v2/sensor_readings_rollups(.json)                
+	GET    /api/v2/sensor_readings_rollups(.json)                
 
 ### Details
 
-#### GET  /api/v2/sensor_readings_rollups(.:format)
+#### GET  /api/v2/sensor_readings_rollups(.json)
 
 **Summary**: Retrieve a list of all sensor_readings_rollups
 
@@ -739,18 +739,9 @@
 
 ### Overview
 
-	GET    /api/v2/system_info(.:format)                            
-	GET    /api/v2/system_info(.:format)                            
+	GET    /api/v2/system_info(.json)                            
 
-### Details
-
-#### GET  /api/v2/system_info(.:format)
-
-**Summary**: Retrieve a list of all system_info
-
-**Params**: na
-
-**JSON**:
+### JSON
 
     {"system_info":{
     "poweriq_version":"3.1.0-8.201108171401",
@@ -820,66 +811,66 @@
     }
     }}
 
+### Details
+
+#### GET  /api/v2/system_info(.json)
+
+**Summary**: Retrieve a list of the system_info resource
+
+**Params**: na
+
 ****************************************************************
 
 ## aisles
 
 ### Overview
 
-	DELETE /api/v2/aisles/:id(.:format)                             
-	PUT    /api/v2/aisles/:id(.:format)                             
-	GET    /api/v2/aisles/:id(.:format)                             
-	POST   /api/v2/aisles(.:format)                                 
-	GET    /api/v2/aisles(.:format)                                 
-	PUT    /api/v2/aisles/:id/move_to(.:format)                     
-	GET    /api/v2/aisles/:id/siblings(.:format)                    
-	GET    /api/v2/aisles/:id/descendants(.:format)                 
-	GET    /api/v2/aisles/:id/children(.:format)                    
-	DELETE /api/v2/aisles/:id(.:format)                             
-	PUT    /api/v2/aisles/:id(.:format)                             
-	GET    /api/v2/aisles/:id(.:format)                             
-	POST   /api/v2/aisles(.:format)                                 
-	GET    /api/v2/aisles(.:format)                                 
-	PUT    /api/v2/aisles/:id/move_to(.:format)                     
-	GET    /api/v2/aisles/:id/siblings(.:format)                    
-	GET    /api/v2/aisles/:id/descendants(.:format)                 
-	GET    /api/v2/aisles/:id/children(.:format)                    
+	DELETE /api/v2/aisles/:id(.json)                             
+	PUT    /api/v2/aisles/:id(.json)                             
+	GET    /api/v2/aisles/:id(.json)                             
+	POST   /api/v2/aisles(.json)                                 
+	GET    /api/v2/aisles(.json)                                 
+	PUT    /api/v2/aisles/:id/move_to(.json)                     
+	GET    /api/v2/aisles/:id/siblings(.json)                    
+	GET    /api/v2/aisles/:id/descendants(.json)                 
+	GET    /api/v2/aisles/:id/children(.json)                    
+
+### JSON
+
+    {"aisle":{
+        "id":2,
+        "name":"Aisle for 192.168 subnet",
+        "external_key":"Aisle -- 2",
+        "capacity":3.1415
+    }}
 
 ### Details
 
-#### GET  /api/v2/aisles/:id/children(.:format)
+#### GET  /api/v2/aisles/:id/children(.json)
 
 **Summary**: 
 
 **Params**: na
 
-**JSON**: {}
-
-#### GET  /api/v2/aisles/:id/descendants(.:format)
+#### GET  /api/v2/aisles/:id/descendants(.json)
 
 **Summary**: 
 
 **Params**: na
 
-**JSON**: {}
-
-#### GET  /api/v2/aisles/:id/siblings(.:format)
+#### GET  /api/v2/aisles/:id/siblings(.json)
 
 **Summary**: 
 
 **Params**: na
 
-**JSON**: {}
-
-#### PUT  /api/v2/aisles/:id/move_to(.:format)
+#### PUT  /api/v2/aisles/:id/move_to(.json)
 
 **Summary**: 
 
 **Params**: na
 
-**JSON**: {}
-
-#### GET  /api/v2/aisles(.:format)
+#### GET  /api/v2/aisles(.json)
 
 **Summary**: Retrieve a list of all aisles
 
@@ -902,44 +893,29 @@
         }
     ]}
 
-#### POST  /api/v2/aisles(.:format)
+#### POST  /api/v2/aisles(.json)
 
 **Summary**: Create a new aisles
 
 **Params**: na
 
-**JSON**: {}
-
-#### GET  /api/v2/aisles/:id(.:format)
+#### GET  /api/v2/aisles/:id(.json)
 
 **Summary**: Retrieve an aisles resource by ID
 
 **Params**: na
 
-**JSON**:
-
-    {"aisle":{
-        "id":2,
-        "name":"Aisle for 192.168 subnet",
-        "external_key":"Aisle -- 2",
-        "capacity":3.1415
-    }}
-
-#### PUT  /api/v2/aisles/:id(.:format)
+#### PUT  /api/v2/aisles/:id(.json)
 
 **Summary**: Update a aisles resource by ID
 
 **Params**: na
 
-**JSON**: {}
-
-#### DELETE  /api/v2/aisles/:id(.:format)
+#### DELETE  /api/v2/aisles/:id(.json)
 
 **Summary**: Delete a aisles resource by ID
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -947,28 +923,28 @@
 
 ### Overview
 
-	DELETE /api/v2/data_centers/:id(.:format)                       
-	PUT    /api/v2/data_centers/:id(.:format)                       
-	GET    /api/v2/data_centers/:id(.:format)                       
-	POST   /api/v2/data_centers(.:format)                           
-	GET    /api/v2/data_centers(.:format)                           
-	PUT    /api/v2/data_centers/:id/move_to(.:format)               
-	GET    /api/v2/data_centers/:id/siblings(.:format)              
-	GET    /api/v2/data_centers/:id/descendants(.:format)           
-	GET    /api/v2/data_centers/:id/children(.:format)              
-	DELETE /api/v2/data_centers/:id(.:format)                       
-	PUT    /api/v2/data_centers/:id(.:format)                       
-	GET    /api/v2/data_centers/:id(.:format)                       
-	POST   /api/v2/data_centers(.:format)                           
-	GET    /api/v2/data_centers(.:format)                           
-	PUT    /api/v2/data_centers/:id/move_to(.:format)               
-	GET    /api/v2/data_centers/:id/siblings(.:format)              
-	GET    /api/v2/data_centers/:id/descendants(.:format)           
-	GET    /api/v2/data_centers/:id/children(.:format)              
+	DELETE /api/v2/data_centers/:id(.json)                       
+	PUT    /api/v2/data_centers/:id(.json)                       
+	GET    /api/v2/data_centers/:id(.json)                       
+	POST   /api/v2/data_centers(.json)                           
+	GET    /api/v2/data_centers(.json)                           
+	PUT    /api/v2/data_centers/:id/move_to(.json)               
+	GET    /api/v2/data_centers/:id/siblings(.json)              
+	GET    /api/v2/data_centers/:id/descendants(.json)           
+	GET    /api/v2/data_centers/:id/children(.json)              
+	DELETE /api/v2/data_centers/:id(.json)                       
+	PUT    /api/v2/data_centers/:id(.json)                       
+	GET    /api/v2/data_centers/:id(.json)                       
+	POST   /api/v2/data_centers(.json)                           
+	GET    /api/v2/data_centers(.json)                           
+	PUT    /api/v2/data_centers/:id/move_to(.json)               
+	GET    /api/v2/data_centers/:id/siblings(.json)              
+	GET    /api/v2/data_centers/:id/descendants(.json)           
+	GET    /api/v2/data_centers/:id/children(.json)              
 
 ### Details
 
-#### GET  /api/v2/data_centers/:id/children(.:format)
+#### GET  /api/v2/data_centers/:id/children(.json)
 
 **Summary**: 
 
@@ -976,7 +952,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/data_centers/:id/descendants(.:format)
+#### GET  /api/v2/data_centers/:id/descendants(.json)
 
 **Summary**: 
 
@@ -984,7 +960,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/data_centers/:id/siblings(.:format)
+#### GET  /api/v2/data_centers/:id/siblings(.json)
 
 **Summary**: 
 
@@ -992,7 +968,7 @@
 
 **JSON**: {}
 
-#### PUT  /api/v2/data_centers/:id/move_to(.:format)
+#### PUT  /api/v2/data_centers/:id/move_to(.json)
 
 **Summary**: 
 
@@ -1000,7 +976,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/data_centers(.:format)
+#### GET  /api/v2/data_centers(.json)
 
 **Summary**: Retrieve a list of all data_centers
 
@@ -1055,7 +1031,7 @@
         }
     ]}
 
-#### POST  /api/v2/data_centers(.:format)
+#### POST  /api/v2/data_centers(.json)
 
 **Summary**: Create a new data_centers
 
@@ -1063,7 +1039,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/data_centers/:id(.:format)
+#### GET  /api/v2/data_centers/:id(.json)
 
 **Summary**: Retrieve an data_centers resource by ID
 
@@ -1071,7 +1047,7 @@
 
 **JSON**: {}
 
-#### PUT  /api/v2/data_centers/:id(.:format)
+#### PUT  /api/v2/data_centers/:id(.json)
 
 **Summary**: Update a data_centers resource by ID
 
@@ -1079,7 +1055,7 @@
 
 **JSON**: {}
 
-#### DELETE  /api/v2/data_centers/:id(.:format)
+#### DELETE  /api/v2/data_centers/:id(.json)
 
 **Summary**: Delete a data_centers resource by ID
 
@@ -1093,28 +1069,28 @@
 
 ### Overview
 
-	DELETE /api/v2/floors/:id(.:format)                             
-	PUT    /api/v2/floors/:id(.:format)                             
-	GET    /api/v2/floors/:id(.:format)                             
-	POST   /api/v2/floors(.:format)                                 
-	GET    /api/v2/floors(.:format)                                 
-	PUT    /api/v2/floors/:id/move_to(.:format)                     
-	GET    /api/v2/floors/:id/siblings(.:format)                    
-	GET    /api/v2/floors/:id/descendants(.:format)                 
-	GET    /api/v2/floors/:id/children(.:format)                    
-	DELETE /api/v2/floors/:id(.:format)                             
-	PUT    /api/v2/floors/:id(.:format)                             
-	GET    /api/v2/floors/:id(.:format)                             
-	POST   /api/v2/floors(.:format)                                 
-	GET    /api/v2/floors(.:format)                                 
-	PUT    /api/v2/floors/:id/move_to(.:format)                     
-	GET    /api/v2/floors/:id/siblings(.:format)                    
-	GET    /api/v2/floors/:id/descendants(.:format)                 
-	GET    /api/v2/floors/:id/children(.:format)                    
+	DELETE /api/v2/floors/:id(.json)                             
+	PUT    /api/v2/floors/:id(.json)                             
+	GET    /api/v2/floors/:id(.json)                             
+	POST   /api/v2/floors(.json)                                 
+	GET    /api/v2/floors(.json)                                 
+	PUT    /api/v2/floors/:id/move_to(.json)                     
+	GET    /api/v2/floors/:id/siblings(.json)                    
+	GET    /api/v2/floors/:id/descendants(.json)                 
+	GET    /api/v2/floors/:id/children(.json)                    
+	DELETE /api/v2/floors/:id(.json)                             
+	PUT    /api/v2/floors/:id(.json)                             
+	GET    /api/v2/floors/:id(.json)                             
+	POST   /api/v2/floors(.json)                                 
+	GET    /api/v2/floors(.json)                                 
+	PUT    /api/v2/floors/:id/move_to(.json)                     
+	GET    /api/v2/floors/:id/siblings(.json)                    
+	GET    /api/v2/floors/:id/descendants(.json)                 
+	GET    /api/v2/floors/:id/children(.json)                    
 
 ### Details
 
-#### GET  /api/v2/floors/:id/children(.:format)
+#### GET  /api/v2/floors/:id/children(.json)
 
 **Summary**: 
 
@@ -1122,7 +1098,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/floors/:id/descendants(.:format)
+#### GET  /api/v2/floors/:id/descendants(.json)
 
 **Summary**: 
 
@@ -1130,7 +1106,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/floors/:id/siblings(.:format)
+#### GET  /api/v2/floors/:id/siblings(.json)
 
 **Summary**: 
 
@@ -1138,7 +1114,7 @@
 
 **JSON**: {}
 
-#### PUT  /api/v2/floors/:id/move_to(.:format)
+#### PUT  /api/v2/floors/:id/move_to(.json)
 
 **Summary**: 
 
@@ -1146,7 +1122,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/floors(.:format)
+#### GET  /api/v2/floors(.json)
 
 **Summary**: Retrieve a list of all floors
 
@@ -1169,7 +1145,7 @@
         }
     ]}
 
-#### POST  /api/v2/floors(.:format)
+#### POST  /api/v2/floors(.json)
 
 **Summary**: Create a new floors
 
@@ -1177,7 +1153,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/floors/:id(.:format)
+#### GET  /api/v2/floors/:id(.json)
 
 **Summary**: Retrieve an floors resource by ID
 
@@ -1192,7 +1168,7 @@
         "capacity":1.618
     }}
 
-#### PUT  /api/v2/floors/:id(.:format)
+#### PUT  /api/v2/floors/:id(.json)
 
 **Summary**: Update a floors resource by ID
 
@@ -1200,7 +1176,7 @@
 
 **JSON**: {}
 
-#### DELETE  /api/v2/floors/:id(.:format)
+#### DELETE  /api/v2/floors/:id(.json)
 
 **Summary**: Delete a floors resource by ID
 
@@ -1214,28 +1190,28 @@
 
 ### Overview
 
-	DELETE /api/v2/racks/:id(.:format)                              
-	PUT    /api/v2/racks/:id(.:format)                              
-	GET    /api/v2/racks/:id(.:format)                              
-	POST   /api/v2/racks(.:format)                                  
-	GET    /api/v2/racks(.:format)                                  
-	PUT    /api/v2/racks/:id/move_to(.:format)                      
-	GET    /api/v2/racks/:id/siblings(.:format)                     
-	GET    /api/v2/racks/:id/descendants(.:format)                  
-	GET    /api/v2/racks/:id/children(.:format)                     
-	DELETE /api/v2/racks/:id(.:format)                              
-	PUT    /api/v2/racks/:id(.:format)                              
-	GET    /api/v2/racks/:id(.:format)                              
-	POST   /api/v2/racks(.:format)                                  
-	GET    /api/v2/racks(.:format)                                  
-	PUT    /api/v2/racks/:id/move_to(.:format)                      
-	GET    /api/v2/racks/:id/siblings(.:format)                     
-	GET    /api/v2/racks/:id/descendants(.:format)                  
-	GET    /api/v2/racks/:id/children(.:format)                     
+	DELETE /api/v2/racks/:id(.json)                              
+	PUT    /api/v2/racks/:id(.json)                              
+	GET    /api/v2/racks/:id(.json)                              
+	POST   /api/v2/racks(.json)                                  
+	GET    /api/v2/racks(.json)                                  
+	PUT    /api/v2/racks/:id/move_to(.json)                      
+	GET    /api/v2/racks/:id/siblings(.json)                     
+	GET    /api/v2/racks/:id/descendants(.json)                  
+	GET    /api/v2/racks/:id/children(.json)                     
+	DELETE /api/v2/racks/:id(.json)                              
+	PUT    /api/v2/racks/:id(.json)                              
+	GET    /api/v2/racks/:id(.json)                              
+	POST   /api/v2/racks(.json)                                  
+	GET    /api/v2/racks(.json)                                  
+	PUT    /api/v2/racks/:id/move_to(.json)                      
+	GET    /api/v2/racks/:id/siblings(.json)                     
+	GET    /api/v2/racks/:id/descendants(.json)                  
+	GET    /api/v2/racks/:id/children(.json)                     
 
 ### Details
 
-#### GET  /api/v2/racks/:id/children(.:format)
+#### GET  /api/v2/racks/:id/children(.json)
 
 **Summary**: Retrieve all the children of the rack
 
@@ -1464,7 +1440,7 @@
         }
     ]}
 
-#### GET  /api/v2/racks/:id/descendants(.:format)
+#### GET  /api/v2/racks/:id/descendants(.json)
 
 **Summary**: Retrieve all the descendants of the rack
 
@@ -1693,7 +1669,7 @@
         }
     ]}
 
-#### GET  /api/v2/racks/:id/siblings(.:format)
+#### GET  /api/v2/racks/:id/siblings(.json)
 
 **Summary**: Retrieve all the siblings of the rack
 
@@ -1723,7 +1699,7 @@
             }
     ]}
 
-#### PUT  /api/v2/racks/:id/move_to(.:format)
+#### PUT  /api/v2/racks/:id/move_to(.json)
 
 **Summary**: 
 
@@ -1731,7 +1707,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/racks(.:format)
+#### GET  /api/v2/racks(.json)
 
 **Summary**: Retrieve a list of all racks
 
@@ -1784,7 +1760,7 @@
         }
     ]}
 
-#### POST  /api/v2/racks(.:format)
+#### POST  /api/v2/racks(.json)
 
 **Summary**: Create a new racks resource
 
@@ -1809,7 +1785,7 @@
         "capacity":3.1415
     }}
 
-#### GET  /api/v2/racks/:id(.:format)
+#### GET  /api/v2/racks/:id(.json)
 
 **Summary**: Retrieve an racks resource by ID
 
@@ -1825,7 +1801,7 @@
         "capacity":3.1415
     }}
 
-#### PUT  /api/v2/racks/:id(.:format)
+#### PUT  /api/v2/racks/:id(.json)
 
 **Summary**: Update a racks resource by ID
 
@@ -1841,7 +1817,7 @@
         "capacity":3.1415
     }}
 
-#### DELETE  /api/v2/racks/:id(.:format)
+#### DELETE  /api/v2/racks/:id(.json)
 
 **Summary**: Delete a racks resource by ID
 
@@ -1863,28 +1839,28 @@
 
 ### Overview
 
-	DELETE /api/v2/rooms/:id(.:format)                              
-	PUT    /api/v2/rooms/:id(.:format)                              
-	GET    /api/v2/rooms/:id(.:format)                              
-	POST   /api/v2/rooms(.:format)                                  
-	GET    /api/v2/rooms(.:format)                                  
-	PUT    /api/v2/rooms/:id/move_to(.:format)                      
-	GET    /api/v2/rooms/:id/siblings(.:format)                     
-	GET    /api/v2/rooms/:id/descendants(.:format)                  
-	GET    /api/v2/rooms/:id/children(.:format)                     
-	DELETE /api/v2/rooms/:id(.:format)                              
-	PUT    /api/v2/rooms/:id(.:format)                              
-	GET    /api/v2/rooms/:id(.:format)                              
-	POST   /api/v2/rooms(.:format)                                  
-	GET    /api/v2/rooms(.:format)                                  
-	PUT    /api/v2/rooms/:id/move_to(.:format)                      
-	GET    /api/v2/rooms/:id/siblings(.:format)                     
-	GET    /api/v2/rooms/:id/descendants(.:format)                  
-	GET    /api/v2/rooms/:id/children(.:format)                     
+	DELETE /api/v2/rooms/:id(.json)                              
+	PUT    /api/v2/rooms/:id(.json)                              
+	GET    /api/v2/rooms/:id(.json)                              
+	POST   /api/v2/rooms(.json)                                  
+	GET    /api/v2/rooms(.json)                                  
+	PUT    /api/v2/rooms/:id/move_to(.json)                      
+	GET    /api/v2/rooms/:id/siblings(.json)                     
+	GET    /api/v2/rooms/:id/descendants(.json)                  
+	GET    /api/v2/rooms/:id/children(.json)                     
+	DELETE /api/v2/rooms/:id(.json)                              
+	PUT    /api/v2/rooms/:id(.json)                              
+	GET    /api/v2/rooms/:id(.json)                              
+	POST   /api/v2/rooms(.json)                                  
+	GET    /api/v2/rooms(.json)                                  
+	PUT    /api/v2/rooms/:id/move_to(.json)                      
+	GET    /api/v2/rooms/:id/siblings(.json)                     
+	GET    /api/v2/rooms/:id/descendants(.json)                  
+	GET    /api/v2/rooms/:id/children(.json)                     
 
 ### Details
 
-#### GET  /api/v2/rooms/:id/children(.:format)
+#### GET  /api/v2/rooms/:id/children(.json)
 
 **Summary**: 
 
@@ -1892,7 +1868,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/rooms/:id/descendants(.:format)
+#### GET  /api/v2/rooms/:id/descendants(.json)
 
 **Summary**: 
 
@@ -1900,7 +1876,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/rooms/:id/siblings(.:format)
+#### GET  /api/v2/rooms/:id/siblings(.json)
 
 **Summary**: 
 
@@ -1908,7 +1884,7 @@
 
 **JSON**: {}
 
-#### PUT  /api/v2/rooms/:id/move_to(.:format)
+#### PUT  /api/v2/rooms/:id/move_to(.json)
 
 **Summary**: 
 
@@ -1916,7 +1892,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/rooms(.:format)
+#### GET  /api/v2/rooms(.json)
 
 **Summary**: Retrieve a list of all rooms
 
@@ -1939,7 +1915,7 @@
         }
     ]}
 
-#### POST  /api/v2/rooms(.:format)
+#### POST  /api/v2/rooms(.json)
 
 **Summary**: Create a new rooms
 
@@ -1947,7 +1923,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/rooms/:id(.:format)
+#### GET  /api/v2/rooms/:id(.json)
 
 **Summary**: Retrieve an rooms resource by ID
 
@@ -1962,7 +1938,7 @@
         "capacity": 1.618
     }}
 
-#### PUT  /api/v2/rooms/:id(.:format)
+#### PUT  /api/v2/rooms/:id(.json)
 
 **Summary**: Update a rooms resource by ID
 
@@ -1970,7 +1946,7 @@
 
 **JSON**: {}
 
-#### DELETE  /api/v2/rooms/:id(.:format)
+#### DELETE  /api/v2/rooms/:id(.json)
 
 **Summary**: Delete a rooms resource by ID
 
@@ -1984,28 +1960,28 @@
 
 ### Overview
 
-	DELETE /api/v2/rows/:id(.:format)                               
-	PUT    /api/v2/rows/:id(.:format)                               
-	GET    /api/v2/rows/:id(.:format)                               
-	POST   /api/v2/rows(.:format)                                   
-	GET    /api/v2/rows(.:format)                                   
-	PUT    /api/v2/rows/:id/move_to(.:format)                       
-	GET    /api/v2/rows/:id/siblings(.:format)                      
-	GET    /api/v2/rows/:id/descendants(.:format)                   
-	GET    /api/v2/rows/:id/children(.:format)                      
-	DELETE /api/v2/rows/:id(.:format)                               
-	PUT    /api/v2/rows/:id(.:format)                               
-	GET    /api/v2/rows/:id(.:format)                               
-	POST   /api/v2/rows(.:format)                                   
-	GET    /api/v2/rows(.:format)                                   
-	PUT    /api/v2/rows/:id/move_to(.:format)                       
-	GET    /api/v2/rows/:id/siblings(.:format)                      
-	GET    /api/v2/rows/:id/descendants(.:format)                   
-	GET    /api/v2/rows/:id/children(.:format)                      
+	DELETE /api/v2/rows/:id(.json)                               
+	PUT    /api/v2/rows/:id(.json)                               
+	GET    /api/v2/rows/:id(.json)                               
+	POST   /api/v2/rows(.json)                                   
+	GET    /api/v2/rows(.json)                                   
+	PUT    /api/v2/rows/:id/move_to(.json)                       
+	GET    /api/v2/rows/:id/siblings(.json)                      
+	GET    /api/v2/rows/:id/descendants(.json)                   
+	GET    /api/v2/rows/:id/children(.json)                      
+	DELETE /api/v2/rows/:id(.json)                               
+	PUT    /api/v2/rows/:id(.json)                               
+	GET    /api/v2/rows/:id(.json)                               
+	POST   /api/v2/rows(.json)                                   
+	GET    /api/v2/rows(.json)                                   
+	PUT    /api/v2/rows/:id/move_to(.json)                       
+	GET    /api/v2/rows/:id/siblings(.json)                      
+	GET    /api/v2/rows/:id/descendants(.json)                   
+	GET    /api/v2/rows/:id/children(.json)                      
 
 ### Details
 
-#### GET  /api/v2/rows/:id/children(.:format)
+#### GET  /api/v2/rows/:id/children(.json)
 
 **Summary**: 
 
@@ -2013,7 +1989,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/rows/:id/descendants(.:format)
+#### GET  /api/v2/rows/:id/descendants(.json)
 
 **Summary**: 
 
@@ -2021,7 +1997,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/rows/:id/siblings(.:format)
+#### GET  /api/v2/rows/:id/siblings(.json)
 
 **Summary**: 
 
@@ -2029,7 +2005,7 @@
 
 **JSON**: {}
 
-#### PUT  /api/v2/rows/:id/move_to(.:format)
+#### PUT  /api/v2/rows/:id/move_to(.json)
 
 **Summary**: 
 
@@ -2037,7 +2013,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/rows(.:format)
+#### GET  /api/v2/rows(.json)
 
 **Summary**: Retrieve a list of all rows
 
@@ -2078,7 +2054,7 @@
         }
     ]}
 
-#### POST  /api/v2/rows(.:format)
+#### POST  /api/v2/rows(.json)
 
 **Summary**: Create a new rows
 
@@ -2086,7 +2062,7 @@
 
 **JSON**: {}
 
-#### GET  /api/v2/rows/:id(.:format)
+#### GET  /api/v2/rows/:id(.json)
 
 **Summary**: Retrieve an rows resource by ID
 
@@ -2101,7 +2077,7 @@
         "capacity":1.618
     }}
 
-#### PUT  /api/v2/rows/:id(.:format)
+#### PUT  /api/v2/rows/:id(.json)
 
 **Summary**: Update a rows resource by ID
 
@@ -2109,7 +2085,7 @@
 
 **JSON**: {}
 
-#### DELETE  /api/v2/rows/:id(.:format)
+#### DELETE  /api/v2/rows/:id(.json)
 
 **Summary**: Delete a rows resource by ID
 
