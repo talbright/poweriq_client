@@ -112,20 +112,55 @@
 	GET    /api/v2/asset_strips/:id(.json)                       
 	GET    /api/v2/asset_strips(.json)                           
 	GET    /api/v2/asset_strips/:asset_strip_id/rack_units(.json)
-	PUT    /api/v2/asset_strips/:id(.json)                       
-	GET    /api/v2/asset_strips/:id(.json)                       
-	GET    /api/v2/asset_strips(.json)                           
-	GET    /api/v2/asset_strips/:asset_strip_id/rack_units(.json)
+
+### JSON
+
+    {"asset_strip":{
+        "id":1,
+        "pdu_id":26,
+        "name":"Asset Strip PX43-224",
+        "state":"available",
+        "created_at":"2011-08-29T18:15:26Z",
+        "updated_at":"2011-08-29T18:15:26Z",
+        "ordinal":1,
+        "default_connected_led_color":"000080",
+        "default_disconnected_led_color":"ff0000"
+    }}
 
 ### Details
 
 #### GET  /api/v2/asset_strips/:asset_strip_id/rack_units(.json)
 
-**Summary**: 
+**Summary**: Retrieve a list of all rack_units resources associated with the asset_strips resource
 
 **Params**: na
 
-**JSON**: {}
+**Example (response):
+
+    {"rack_units":[
+        {
+            "id":1,
+            "asset_strip_id":1,
+            "tag_id":"",
+            "ordinal":1,
+            "led_state":"on",
+            "led_mode":"automatic",
+            "led_color":"ff0000",
+            "created_at":"2011-08-29T18:15:26Z",
+            "updated_at":"2011-08-29T18:15:26Z"
+        },
+        {
+            "id":2,
+            "asset_strip_id":1,
+            "tag_id":"",
+            "ordinal":2,
+            "led_state":"blinking",
+            "led_mode":"manual",
+            "led_color":"000080",
+            "created_at":"2011-08-29T18:15:26Z",
+            "updated_at":"2011-08-29T18:15:26Z"
+        }
+    ]}
 
 #### GET  /api/v2/asset_strips(.json)
 
@@ -133,15 +168,11 @@
 
 **Params**: na
 
-**JSON**: {}
-
 #### GET  /api/v2/asset_strips/:id(.json)
 
 **Summary**: Retrieve an asset_strips resource by ID
 
 **Params**: na
-
-**JSON**: {}
 
 #### PUT  /api/v2/asset_strips/:id(.json)
 
@@ -149,7 +180,49 @@
 
 **Params**: na
 
-**JSON**: {}
+****************************************************************
+
+## rack_units
+
+### Overview
+
+	PUT    /api/v2/rack_units/:id(.json)
+	GET    /api/v2/rack_units/:id(.json)
+	GET    /api/v2/rack_units(.json)
+
+### JSON
+
+    {"rack_unit":{
+        "id":1,
+        "asset_strip_id":1,
+        "tag_id":"",
+        "ordinal":1,
+        "led_state":"on",
+        "led_mode":"automatic",
+        "led_color":"ff0000",
+        "created_at":"2011-08-29T18:15:26Z",
+        "updated_at":"2011-08-29T18:15:26Z"
+    }}
+
+### Details
+
+#### GET  /api/v2/rack_units(.json)
+
+**Summary**: Retrieve a list of all rack_units
+
+**Params**: na
+
+#### GET  /api/v2/rack_units/:id(.json)
+
+**Summary**: Retrieve an rack_units resource by ID
+
+**Params**: na
+
+#### PUT  /api/v2/rack_units/:id(.json)
+
+**Summary**: Update a rack_units resource by ID
+
+**Params**: na
 
 ****************************************************************
 
@@ -157,7 +230,6 @@
 
 ### Overview
 
-	GET    /api/v2/circuit_breaker_readings(.json)               
 	GET    /api/v2/circuit_breaker_readings(.json)               
 
 ### Details
@@ -168,15 +240,12 @@
 
 **Params**: na
 
-**JSON**: {}
-
 ****************************************************************
 
 ## circuit_breaker_readings_rollups
 
 ### Overview
 
-	GET    /api/v2/circuit_breaker_readings_rollups(.json)       
 	GET    /api/v2/circuit_breaker_readings_rollups(.json)       
 
 ### Details
@@ -187,8 +256,6 @@
 
 **Params**: na
 
-**JSON**: {}
-
 ****************************************************************
 
 ## devices
@@ -198,19 +265,33 @@
 	GET    /api/v2/devices/:id(.json)                            
 	GET    /api/v2/devices(.json)                                
 	GET    /api/v2/devices/:device_id/outlets(.json)             
-	GET    /api/v2/devices/:id(.json)                            
-	GET    /api/v2/devices(.json)                                
-	GET    /api/v2/devices/:device_id/outlets(.json)             
+
+### JSON
+
+    { "device":{
+        "id":7,
+        "name":"Device for PDU 192.168.42.99 outlet outlet 7",
+        "customer":"Unknown",
+        "device_type":"Default Generated Device",
+        "power_rating":null,
+        "decommissioned":false,
+        "custom_field_1":null,
+        "custom_field_2":null,
+        "external_key":"IT Device -- 7",
+        "enable_graceful_shutdown":null,
+        "ip_address":null,
+        "shutdown_command_id":null,
+        "shutdown_wait":null,
+        "asset_tag_id":null
+    } }
 
 ### Details
 
 #### GET  /api/v2/devices/:device_id/outlets(.json)
 
-**Summary**: 
+**Summary**: Retrieve the outlets for the device resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/devices(.json)
 
@@ -218,15 +299,11 @@
 
 **Params**: na
 
-**JSON**: {}
-
 #### GET  /api/v2/devices/:id(.json)
 
 **Summary**: Retrieve an devices resource by ID
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -238,28 +315,46 @@
 	GET    /api/v2/events(.json)                                 
 	PUT    /api/v2/events/clear_batch(.json)                     
 	PUT    /api/v2/events/:id/clear(.json)                       
-	GET    /api/v2/events/:id(.json)                             
-	GET    /api/v2/events(.json)                                 
-	PUT    /api/v2/events/clear_batch(.json)                     
-	PUT    /api/v2/events/:id/clear(.json)                       
+
+### JSON
+
+    {"event":{
+        "id":1,
+        "event_config_id":72,
+        "source":2,
+        "created_at":"2011-08-29T18:15:16Z",
+        "pdu_id":23,
+        "pdu_outlet_id":null,
+        "pdu_circuitbreaker_id":null,
+        "sensor_id":null,
+        "trap_oid":null,
+        "cleared_by":null,
+        "cleared_at":null,
+        "clearing_event_id":null,
+        "clearing_user_id":null,
+        "notification_status":6,
+        "asset_strip_id":null,
+        "rack_unit_id":null,
+        "params":[]
+    }}
 
 ### Details
 
 #### PUT  /api/v2/events/:id/clear(.json)
 
-**Summary**: 
+**Summary**: Clear an events resource 
 
 **Params**: na
-
-**JSON**: {}
 
 #### PUT  /api/v2/events/clear_batch(.json)
 
-**Summary**: 
+**Summary**: Clear multiple events resources
 
 **Params**: na
 
-**JSON**: {}
+**Example (request)**:
+
+**Example (response)**:
 
 #### GET  /api/v2/events(.json)
 
@@ -267,15 +362,11 @@
 
 **Params**: na
 
-**JSON**: {}
-
 #### GET  /api/v2/events/:id(.json)
 
 **Summary**: Retrieve an events resource by ID
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -285,18 +376,14 @@
 
 	GET    /api/v2/jobs/:id(.json)                               
 	GET    /api/v2/jobs/:job_id/messages(.json)                  
-	GET    /api/v2/jobs/:id(.json)                               
-	GET    /api/v2/jobs/:job_id/messages(.json)                  
 
 ### Details
 
 #### GET  /api/v2/jobs/:job_id/messages(.json)
 
-**Summary**: 
+**Summary**: Retrieve all job_messages resources associated with the job 
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/jobs/:id(.json)
 
@@ -304,16 +391,12 @@
 
 **Params**: na
 
-**JSON**: {}
-
 ****************************************************************
 
 ## job_messages
 
 ### Overview
 
-	GET    /api/v2/job_messages/:id(.json)                       
-	GET    /api/v2/job_messages(.json)                           
 	GET    /api/v2/job_messages/:id(.json)                       
 	GET    /api/v2/job_messages(.json)                           
 
@@ -325,15 +408,11 @@
 
 **Params**: na
 
-**JSON**: {}
-
 #### GET  /api/v2/job_messages/:id(.json)
 
 **Summary**: Retrieve an job_messages resource by ID
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -341,7 +420,6 @@
 
 ### Overview
 
-	GET    /api/v2/line_readings(.json)                          
 	GET    /api/v2/line_readings(.json)                          
 
 ### Details
@@ -352,15 +430,12 @@
 
 **Params**: na
 
-**JSON**: {}
-
 ****************************************************************
 
 ## line_readings_rollups
 
 ### Overview
 
-	GET    /api/v2/line_readings_rollups(.json)                  
 	GET    /api/v2/line_readings_rollups(.json)                  
 
 ### Details
@@ -370,8 +445,6 @@
 **Summary**: Retrieve a list of all line_readings_rollups
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -384,37 +457,26 @@
 	GET    /api/v2/outlets/:outlet_id/readings_rollups(.json)    
 	GET    /api/v2/outlets/:outlet_id/readings(.json)            
 	GET    /api/v2/outlets/:outlet_id/events(.json)              
-	GET    /api/v2/outlets/:id(.json)                            
-	GET    /api/v2/outlets(.json)                                
-	GET    /api/v2/outlets/:outlet_id/readings_rollups(.json)    
-	GET    /api/v2/outlets/:outlet_id/readings(.json)            
-	GET    /api/v2/outlets/:outlet_id/events(.json)              
 
 ### Details
 
 #### GET  /api/v2/outlets/:outlet_id/events(.json)
 
-**Summary**: 
+**Summary**: Retrieve all events resources associated with the outlets resource 
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/outlets/:outlet_id/readings(.json)
 
-**Summary**: 
+**Summary**: Retrieve all readings resources associated with the readings resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/outlets/:outlet_id/readings_rollups(.json)
 
-**Summary**: 
+**Summary**: Retrieve all readings_rollups resources associated with the readings resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/outlets(.json)
 
@@ -422,15 +484,11 @@
 
 **Params**: na
 
-**JSON**: {}
-
 #### GET  /api/v2/outlets/:id(.json)
 
 **Summary**: Retrieve an outlets resource by ID
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -438,7 +496,6 @@
 
 ### Overview
 
-	GET    /api/v2/outlet_readings(.json)                        
 	GET    /api/v2/outlet_readings(.json)                        
 
 ### Details
@@ -448,8 +505,6 @@
 **Summary**: Retrieve a list of all outlet_readings
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -468,8 +523,6 @@
 
 **Params**: na
 
-**JSON**: {}
-
 ****************************************************************
 
 ## pdus
@@ -484,64 +537,44 @@
 	GET    /api/v2/pdus/:pdu_id/asset_strips(.json)              
 	GET    /api/v2/pdus/:pdu_id/outlets(.json)                   
 	GET    /api/v2/pdus/:pdu_id/sensors(.json)                   
-	GET    /api/v2/pdus/:id(.json)                               
-	GET    /api/v2/pdus(.json)                                   
-	GET    /api/v2/pdus/:pdu_id/readings_rollups(.json)          
-	GET    /api/v2/pdus/:pdu_id/readings(.json)                  
-	GET    /api/v2/pdus/:pdu_id/events(.json)                    
-	GET    /api/v2/pdus/:pdu_id/asset_strips(.json)              
-	GET    /api/v2/pdus/:pdu_id/outlets(.json)                   
-	GET    /api/v2/pdus/:pdu_id/sensors(.json)                   
 
 ### Details
 
 #### GET  /api/v2/pdus/:pdu_id/sensors(.json)
 
-**Summary**: 
+**Summary**: Retrieve sensors resources associated with the pdu
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/pdus/:pdu_id/outlets(.json)
 
-**Summary**: 
+**Summary**: Retrieve outlets resources associated with the pdu
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/pdus/:pdu_id/asset_strips(.json)
 
-**Summary**: 
+**Summary**: Retrieve asset_strips resources associated with the pdu
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/pdus/:pdu_id/events(.json)
 
-**Summary**: 
+**Summary**: Retrieve events resources associated with the pdu
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/pdus/:pdu_id/readings(.json)
 
-**Summary**: 
+**Summary**: Retrieve readings resources associated with the pdu
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/pdus/:pdu_id/readings_rollups(.json)
 
-**Summary**: 
+**Summary**: Retrieve readings_rollups resources associated with the pdu
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/pdus(.json)
 
@@ -549,15 +582,11 @@
 
 **Params**: na
 
-**JSON**: {}
-
 #### GET  /api/v2/pdus/:id(.json)
 
 **Summary**: Retrieve an pdus resource by ID
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -565,7 +594,6 @@
 
 ### Overview
 
-	GET    /api/v2/pdu_readings(.json)                           
 	GET    /api/v2/pdu_readings(.json)                           
 
 ### Details
@@ -576,15 +604,12 @@
 
 **Params**: na
 
-**JSON**: {}
-
 ****************************************************************
 
 ## pdu_readings_rollups
 
 ### Overview
 
-	GET    /api/v2/pdu_readings_rollups(.json)                   
 	GET    /api/v2/pdu_readings_rollups(.json)                   
 
 ### Details
@@ -594,47 +619,6 @@
 **Summary**: Retrieve a list of all pdu_readings_rollups
 
 **Params**: na
-
-**JSON**: {}
-
-****************************************************************
-
-## rack_units
-
-### Overview
-
-	PUT    /api/v2/rack_units/:id(.json)                         
-	GET    /api/v2/rack_units/:id(.json)                         
-	GET    /api/v2/rack_units(.json)                             
-	PUT    /api/v2/rack_units/:id(.json)                         
-	GET    /api/v2/rack_units/:id(.json)                         
-	GET    /api/v2/rack_units(.json)                             
-
-### Details
-
-#### GET  /api/v2/rack_units(.json)
-
-**Summary**: Retrieve a list of all rack_units
-
-**Params**: na
-
-**JSON**: {}
-
-#### GET  /api/v2/rack_units/:id(.json)
-
-**Summary**: Retrieve an rack_units resource by ID
-
-**Params**: na
-
-**JSON**: {}
-
-#### PUT  /api/v2/rack_units/:id(.json)
-
-**Summary**: Update a rack_units resource by ID
-
-**Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -647,37 +631,26 @@
 	GET    /api/v2/sensors/:sensor_id/readings_rollups(.json)    
 	GET    /api/v2/sensors/:sensor_id/readings(.json)            
 	GET    /api/v2/sensors/:sensor_id/events(.json)              
-	GET    /api/v2/sensors/:id(.json)                            
-	GET    /api/v2/sensors(.json)                                
-	GET    /api/v2/sensors/:sensor_id/readings_rollups(.json)    
-	GET    /api/v2/sensors/:sensor_id/readings(.json)            
-	GET    /api/v2/sensors/:sensor_id/events(.json)              
 
 ### Details
 
 #### GET  /api/v2/sensors/:sensor_id/events(.json)
 
-**Summary**: 
+**Summary**: Retrieve events resources associated with the sensor
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/sensors/:sensor_id/readings(.json)
 
-**Summary**: 
+**Summary**: Retrieve readings resources associated with the sensor
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/sensors/:sensor_id/readings_rollups(.json)
 
-**Summary**: 
+**Summary**: Retrieve readings_rollups resources associated with the sensor
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/sensors(.json)
 
@@ -685,15 +658,11 @@
 
 **Params**: na
 
-**JSON**: {}
-
 #### GET  /api/v2/sensors/:id(.json)
 
 **Summary**: Retrieve an sensors resource by ID
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -701,7 +670,6 @@
 
 ### Overview
 
-	GET    /api/v2/sensor_readings(.json)                        
 	GET    /api/v2/sensor_readings(.json)                        
 
 ### Details
@@ -712,15 +680,12 @@
 
 **Params**: na
 
-**JSON**: {}
-
 ****************************************************************
 
 ## sensor_readings_rollups
 
 ### Overview
 
-	GET    /api/v2/sensor_readings_rollups(.json)                
 	GET    /api/v2/sensor_readings_rollups(.json)                
 
 ### Details
@@ -730,8 +695,6 @@
 **Summary**: Retrieve a list of all sensor_readings_rollups
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -821,393 +784,29 @@
 
 ****************************************************************
 
-## aisles
-
-### Overview
-
-	DELETE /api/v2/aisles/:id(.json)                             
-	PUT    /api/v2/aisles/:id(.json)                             
-	GET    /api/v2/aisles/:id(.json)                             
-	POST   /api/v2/aisles(.json)                                 
-	GET    /api/v2/aisles(.json)                                 
-	PUT    /api/v2/aisles/:id/move_to(.json)                     
-	GET    /api/v2/aisles/:id/siblings(.json)                    
-	GET    /api/v2/aisles/:id/descendants(.json)                 
-	GET    /api/v2/aisles/:id/children(.json)                    
-
-### JSON
-
-    {"aisle":{
-        "id":2,
-        "name":"Aisle for 192.168 subnet",
-        "external_key":"Aisle -- 2",
-        "capacity":3.1415
-    }}
-
-### Details
-
-#### GET  /api/v2/aisles/:id/children(.json)
-
-**Summary**: 
-
-**Params**: na
-
-#### GET  /api/v2/aisles/:id/descendants(.json)
-
-**Summary**: 
-
-**Params**: na
-
-#### GET  /api/v2/aisles/:id/siblings(.json)
-
-**Summary**: 
-
-**Params**: na
-
-#### PUT  /api/v2/aisles/:id/move_to(.json)
-
-**Summary**: 
-
-**Params**: na
-
-#### GET  /api/v2/aisles(.json)
-
-**Summary**: Retrieve a list of all aisles
-
-**Params**: na
-
-**JSON**:
-
-    {"aisles":[
-        {
-            "id":2,
-            "name":"Aisle for 192.168 subnet",
-            "external_key":"Aisle -- 2",
-            "capacity":3.1415
-        },
-        {
-            "id":3,
-            "name":"Aisle for 212.179 subnet",
-            "external_key":"Aisle -- 3",
-            "capacity":3.1415
-        }
-    ]}
-
-#### POST  /api/v2/aisles(.json)
-
-**Summary**: Create a new aisles
-
-**Params**: na
-
-#### GET  /api/v2/aisles/:id(.json)
-
-**Summary**: Retrieve an aisles resource by ID
-
-**Params**: na
-
-#### PUT  /api/v2/aisles/:id(.json)
-
-**Summary**: Update a aisles resource by ID
-
-**Params**: na
-
-#### DELETE  /api/v2/aisles/:id(.json)
-
-**Summary**: Delete a aisles resource by ID
-
-**Params**: na
-
-****************************************************************
-
-## data_centers
-
-### Overview
-
-	DELETE /api/v2/data_centers/:id(.json)                       
-	PUT    /api/v2/data_centers/:id(.json)                       
-	GET    /api/v2/data_centers/:id(.json)                       
-	POST   /api/v2/data_centers(.json)                           
-	GET    /api/v2/data_centers(.json)                           
-	PUT    /api/v2/data_centers/:id/move_to(.json)               
-	GET    /api/v2/data_centers/:id/siblings(.json)              
-	GET    /api/v2/data_centers/:id/descendants(.json)           
-	GET    /api/v2/data_centers/:id/children(.json)              
-	DELETE /api/v2/data_centers/:id(.json)                       
-	PUT    /api/v2/data_centers/:id(.json)                       
-	GET    /api/v2/data_centers/:id(.json)                       
-	POST   /api/v2/data_centers(.json)                           
-	GET    /api/v2/data_centers(.json)                           
-	PUT    /api/v2/data_centers/:id/move_to(.json)               
-	GET    /api/v2/data_centers/:id/siblings(.json)              
-	GET    /api/v2/data_centers/:id/descendants(.json)           
-	GET    /api/v2/data_centers/:id/children(.json)              
-
-### Details
-
-#### GET  /api/v2/data_centers/:id/children(.json)
-
-**Summary**: 
-
-**Params**: na
-
-**JSON**: {}
-
-#### GET  /api/v2/data_centers/:id/descendants(.json)
-
-**Summary**: 
-
-**Params**: na
-
-**JSON**: {}
-
-#### GET  /api/v2/data_centers/:id/siblings(.json)
-
-**Summary**: 
-
-**Params**: na
-
-**JSON**: {}
-
-#### PUT  /api/v2/data_centers/:id/move_to(.json)
-
-**Summary**: 
-
-**Params**: na
-
-**JSON**: {}
-
-#### GET  /api/v2/data_centers(.json)
-
-**Summary**: Retrieve a list of all data_centers
-
-**Params**: na
-
-**JSON**:
-
-    {"data_centers":[
-        {
-            "id":2,
-            "name":"Data Center #1",
-            "company_name":"Unknown",
-            "contact_name":"Unknown",
-            "contact_phone":"Unknown",
-            "contact_email":"example@example.com",
-            "city":"Unknown",
-            "state":"Unknown",
-            "country":"Unknown",
-            "peak_kwh_rate":0.1,
-            "off_peak_kwh_rate":0.06,
-            "peak_begin":7.0,
-            "peak_end":19.0,
-            "co2_factor":0.6,
-            "cooling_factor":1.0,
-            "custom_field_1":null,
-            "custom_field_2":null,
-            "external_key":"Unassigned Data Center",
-            "capacity":25.5,
-            "cooling_savings":7.0
-        },
-        {
-            "id":3,
-            "name":"Data Center #2",
-            "company_name":"Unknown",
-            "contact_name":"Unknown",
-            "contact_phone":"Unknown",
-            "contact_email":"example@example.com",
-            "city":"Unknown",
-            "state":"Unknown",
-            "country":"Unknown",
-            "peak_kwh_rate":0.1,
-            "off_peak_kwh_rate":0.06,
-            "peak_begin":7.0,
-            "peak_end":19.0,
-            "co2_factor":0.6,
-            "cooling_factor":1.0,
-            "custom_field_1":null,
-            "custom_field_2":null,
-            "external_key":"Unassigned Data Center",
-            "capacity":25.5,
-            "cooling_savings":7.0
-        }
-    ]}
-
-#### POST  /api/v2/data_centers(.json)
-
-**Summary**: Create a new data_centers
-
-**Params**: na
-
-**JSON**: {}
-
-#### GET  /api/v2/data_centers/:id(.json)
-
-**Summary**: Retrieve an data_centers resource by ID
-
-**Params**: na
-
-**JSON**: {}
-
-#### PUT  /api/v2/data_centers/:id(.json)
-
-**Summary**: Update a data_centers resource by ID
-
-**Params**: na
-
-**JSON**: {}
-
-#### DELETE  /api/v2/data_centers/:id(.json)
-
-**Summary**: Delete a data_centers resource by ID
-
-**Params**: na
-
-**JSON**: {}
-
-****************************************************************
-
-## floors
-
-### Overview
-
-	DELETE /api/v2/floors/:id(.json)                             
-	PUT    /api/v2/floors/:id(.json)                             
-	GET    /api/v2/floors/:id(.json)                             
-	POST   /api/v2/floors(.json)                                 
-	GET    /api/v2/floors(.json)                                 
-	PUT    /api/v2/floors/:id/move_to(.json)                     
-	GET    /api/v2/floors/:id/siblings(.json)                    
-	GET    /api/v2/floors/:id/descendants(.json)                 
-	GET    /api/v2/floors/:id/children(.json)                    
-	DELETE /api/v2/floors/:id(.json)                             
-	PUT    /api/v2/floors/:id(.json)                             
-	GET    /api/v2/floors/:id(.json)                             
-	POST   /api/v2/floors(.json)                                 
-	GET    /api/v2/floors(.json)                                 
-	PUT    /api/v2/floors/:id/move_to(.json)                     
-	GET    /api/v2/floors/:id/siblings(.json)                    
-	GET    /api/v2/floors/:id/descendants(.json)                 
-	GET    /api/v2/floors/:id/children(.json)                    
-
-### Details
-
-#### GET  /api/v2/floors/:id/children(.json)
-
-**Summary**: 
-
-**Params**: na
-
-**JSON**: {}
-
-#### GET  /api/v2/floors/:id/descendants(.json)
-
-**Summary**: 
-
-**Params**: na
-
-**JSON**: {}
-
-#### GET  /api/v2/floors/:id/siblings(.json)
-
-**Summary**: 
-
-**Params**: na
-
-**JSON**: {}
-
-#### PUT  /api/v2/floors/:id/move_to(.json)
-
-**Summary**: 
-
-**Params**: na
-
-**JSON**: {}
-
-#### GET  /api/v2/floors(.json)
-
-**Summary**: Retrieve a list of all floors
-
-**Params**: na
-
-**JSON**:
-
-    { "floors":[
-        {
-            "id":2,
-            "name":"Floor for 192 subnet",
-            "external_key":"Floor -- 2",
-            "capacity":1.618
-        },
-        {
-            "id":3,
-            "name":"Floor for 212 subnet",
-            "external_key":"Floor -- 3",
-            "capacity":1.618
-        }
-    ]}
-
-#### POST  /api/v2/floors(.json)
-
-**Summary**: Create a new floors
-
-**Params**: na
-
-**JSON**: {}
-
-#### GET  /api/v2/floors/:id(.json)
-
-**Summary**: Retrieve an floors resource by ID
-
-**Params**: na
-
-**JSON**: {}
-
-    {"floor":{
-        "id":2,
-        "name":"Floor for 192 subnet",
-        "external_key":"Floor -- 2",
-        "capacity":1.618
-    }}
-
-#### PUT  /api/v2/floors/:id(.json)
-
-**Summary**: Update a floors resource by ID
-
-**Params**: na
-
-**JSON**: {}
-
-#### DELETE  /api/v2/floors/:id(.json)
-
-**Summary**: Delete a floors resource by ID
-
-**Params**: na
-
-**JSON**: {}
-
-****************************************************************
-
 ## racks
 
 ### Overview
 
-	DELETE /api/v2/racks/:id(.json)                              
-	PUT    /api/v2/racks/:id(.json)                              
-	GET    /api/v2/racks/:id(.json)                              
-	POST   /api/v2/racks(.json)                                  
-	GET    /api/v2/racks(.json)                                  
-	PUT    /api/v2/racks/:id/move_to(.json)                      
-	GET    /api/v2/racks/:id/siblings(.json)                     
-	GET    /api/v2/racks/:id/descendants(.json)                  
-	GET    /api/v2/racks/:id/children(.json)                     
-	DELETE /api/v2/racks/:id(.json)                              
-	PUT    /api/v2/racks/:id(.json)                              
-	GET    /api/v2/racks/:id(.json)                              
-	POST   /api/v2/racks(.json)                                  
-	GET    /api/v2/racks(.json)                                  
-	PUT    /api/v2/racks/:id/move_to(.json)                      
-	GET    /api/v2/racks/:id/siblings(.json)                     
-	GET    /api/v2/racks/:id/descendants(.json)                  
-	GET    /api/v2/racks/:id/children(.json)                     
+	DELETE /api/v2/racks/:id(.json)
+	PUT    /api/v2/racks/:id(.json)
+	GET    /api/v2/racks/:id(.json)
+	POST   /api/v2/racks(.json)
+	GET    /api/v2/racks(.json)
+	PUT    /api/v2/racks/:id/move_to(.json)
+	GET    /api/v2/racks/:id/siblings(.json)
+	GET    /api/v2/racks/:id/descendants(.json)
+	GET    /api/v2/racks/:id/children(.json)
+
+### JSON
+
+    {"rack": {
+        "id":2,
+        "name":"Rack for 192.168.42.99",
+        "space_id":"foo space",
+        "external_key":"Rack -- 2",
+        "capacity":3.1415
+    }}
 
 ### Details
 
@@ -1217,7 +816,7 @@
 
 **Params**: na
 
-**JSON**:
+**Example (response)**:
 
     {"children":[
         {
@@ -1446,7 +1045,7 @@
 
 **Params**: na
 
-**JSON**:
+**Example (response)**:
 
     {"descendants":[
         {
@@ -1675,7 +1274,7 @@
 
 **Params**: na
 
-**JSON**:
+**Example (response)**:
 
     {
         "siblings":[
@@ -1701,11 +1300,9 @@
 
 #### PUT  /api/v2/racks/:id/move_to(.json)
 
-**Summary**: 
+**Summary**:
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/racks(.json)
 
@@ -1713,7 +1310,7 @@
 
 **Params**: na
 
-**JSON**:
+**Example (response)**:
 
     {"racks":[
         {
@@ -1766,7 +1363,7 @@
 
 **Params**: na
 
-**JSON (request)**:
+**Example (request)**:
 
     {"rack": {
         "name":"Rack for 192.168.42.99",
@@ -1775,7 +1372,7 @@
         "capacity":3.1415
     }}
 
-**JSON (response)**:
+**Example (response)**:
 
     {"rack": {
         "id":99,
@@ -1791,7 +1388,7 @@
 
 **Params**: na
 
-**JSON**:
+**Example (response)**:
 
     {"rack": {
         "id":2,
@@ -1807,12 +1404,21 @@
 
 **Params**: na
 
-**JSON (response)**:
+**Example (request)**:
+
+    {"rack": {
+        "name":"updated Rack for 192.168.42.99",
+        "space_id":"updated foo space",
+        "external_key":"Rack -- 2",
+        "capacity":3.1415
+    }}
+
+**Example (response)**:
 
     {"rack": {
         "id":2,
-        "name":"Rack for 192.168.42.99",
-        "space_id":"foo space",
+        "name":"updated Rack for 192.168.42.99",
+        "space_id":"updated foo space",
         "external_key":"Rack -- 2",
         "capacity":3.1415
     }}
@@ -1823,7 +1429,7 @@
 
 **Params**: na
 
-**JSON (response)**:
+**Example (response)**:
 
     {"rack": {
         "id":2,
@@ -1832,6 +1438,331 @@
         "external_key":"Rack -- 2",
         "capacity":3.1415
     }}
+
+****************************************************************
+
+## aisles
+
+### Overview
+
+	DELETE /api/v2/aisles/:id(.json)                             
+	PUT    /api/v2/aisles/:id(.json)                             
+	GET    /api/v2/aisles/:id(.json)                             
+	POST   /api/v2/aisles(.json)                                 
+	GET    /api/v2/aisles(.json)                                 
+	PUT    /api/v2/aisles/:id/move_to(.json)                     
+	GET    /api/v2/aisles/:id/siblings(.json)                    
+	GET    /api/v2/aisles/:id/descendants(.json)                 
+	GET    /api/v2/aisles/:id/children(.json)                    
+
+### JSON
+
+    {"aisle":{
+        "id":2,
+        "name":"Aisle for 192.168 subnet",
+        "external_key":"Aisle -- 2",
+        "capacity":3.1415
+    }}
+
+### Details
+
+#### GET  /api/v2/aisles/:id/children(.json)
+
+**Summary**: Retrieve the children of the resource
+
+**Params**: na
+
+#### GET  /api/v2/aisles/:id/descendants(.json)
+
+**Summary**: Retrieve the descendants of the resource
+
+**Params**: na
+
+#### GET  /api/v2/aisles/:id/siblings(.json)
+
+**Summary**: Retrieve the siblings of the resource
+
+**Params**: na
+
+#### PUT  /api/v2/aisles/:id/move_to(.json)
+
+**Summary**: Move the resource to another location in the data center
+
+**Params**: na
+
+#### GET  /api/v2/aisles(.json)
+
+**Summary**: Retrieve a list of all aisles
+
+**Params**: na
+
+**Example (response)**:
+
+    {"aisles":[
+        {
+            "id":2,
+            "name":"Aisle for 192.168 subnet",
+            "external_key":"Aisle -- 2",
+            "capacity":3.1415
+        },
+        {
+            "id":3,
+            "name":"Aisle for 212.179 subnet",
+            "external_key":"Aisle -- 3",
+            "capacity":3.1415
+        }
+    ]}
+
+#### POST  /api/v2/aisles(.json)
+
+**Summary**: Create a new aisles
+
+**Params**: na
+
+#### GET  /api/v2/aisles/:id(.json)
+
+**Summary**: Retrieve an aisles resource by ID
+
+**Params**: na
+
+#### PUT  /api/v2/aisles/:id(.json)
+
+**Summary**: Update a aisles resource by ID
+
+**Params**: na
+
+#### DELETE  /api/v2/aisles/:id(.json)
+
+**Summary**: Delete a aisles resource by ID (deletes all descendants of the resource as well)
+
+**Params**: na
+
+****************************************************************
+
+## data_centers
+
+### Overview
+
+	DELETE /api/v2/data_centers/:id(.json)                       
+	PUT    /api/v2/data_centers/:id(.json)                       
+	GET    /api/v2/data_centers/:id(.json)                       
+	POST   /api/v2/data_centers(.json)                           
+	GET    /api/v2/data_centers(.json)                           
+	PUT    /api/v2/data_centers/:id/move_to(.json)               
+	GET    /api/v2/data_centers/:id/siblings(.json)              
+	GET    /api/v2/data_centers/:id/descendants(.json)           
+	GET    /api/v2/data_centers/:id/children(.json)              
+
+### JSON
+
+    {"data_center":{
+        "id":2,
+        "name":"Data Center #1",
+        "company_name":"Unknown",
+        "contact_name":"Unknown",
+        "contact_phone":"Unknown",
+        "contact_email":"example@example.com",
+        "city":"Unknown",
+        "state":"Unknown",
+        "country":"Unknown",
+        "peak_kwh_rate":0.1,
+        "off_peak_kwh_rate":0.06,
+        "peak_begin":7.0,
+        "peak_end":19.0,
+        "co2_factor":0.6,
+        "cooling_factor":1.0,
+        "custom_field_1":null,
+        "custom_field_2":null,
+        "external_key":"Unassigned Data Center",
+        "capacity":25.5,
+        "cooling_savings":7.0
+    }}
+
+### Details
+
+#### GET  /api/v2/data_centers/:id/children(.json)
+
+**Summary**: Retrieve the children of the resource
+
+**Params**: na
+
+#### GET  /api/v2/data_centers/:id/descendants(.json)
+
+**Summary**: Retrieve the descendants of the resource
+
+**Params**: na
+
+#### GET  /api/v2/data_centers/:id/siblings(.json)
+
+**Summary**: Retrieve the siblings of the resource
+
+**Params**: na
+
+#### PUT  /api/v2/data_centers/:id/move_to(.json)
+
+**Summary**: Move the resource to another location in the data center
+
+**Params**: na
+
+#### GET  /api/v2/data_centers(.json)
+
+**Summary**: Retrieve a list of all data_centers
+
+**Params**: na
+
+**Example (response)**:
+
+    {"data_centers":[
+        {
+            "id":2,
+            "name":"Data Center #1",
+            "company_name":"Unknown",
+            "contact_name":"Unknown",
+            "contact_phone":"Unknown",
+            "contact_email":"example@example.com",
+            "city":"Unknown",
+            "state":"Unknown",
+            "country":"Unknown",
+            "peak_kwh_rate":0.1,
+            "off_peak_kwh_rate":0.06,
+            "peak_begin":7.0,
+            "peak_end":19.0,
+            "co2_factor":0.6,
+            "cooling_factor":1.0,
+            "custom_field_1":null,
+            "custom_field_2":null,
+            "external_key":"Unassigned Data Center",
+            "capacity":25.5,
+            "cooling_savings":7.0
+        },
+        {
+            "id":3,
+            "name":"Data Center #2",
+            "company_name":"Unknown",
+            "contact_name":"Unknown",
+            "contact_phone":"Unknown",
+            "contact_email":"example@example.com",
+            "city":"Unknown",
+            "state":"Unknown",
+            "country":"Unknown",
+            "peak_kwh_rate":0.1,
+            "off_peak_kwh_rate":0.06,
+            "peak_begin":7.0,
+            "peak_end":19.0,
+            "co2_factor":0.6,
+            "cooling_factor":1.0,
+            "custom_field_1":null,
+            "custom_field_2":null,
+            "external_key":"Unassigned Data Center",
+            "capacity":25.5,
+            "cooling_savings":7.0
+        }
+    ]}
+
+#### POST  /api/v2/data_centers(.json)
+
+**Summary**: Create a new data_centers resource
+
+**Params**: na
+
+#### GET  /api/v2/data_centers/:id(.json)
+
+**Summary**: Retrieve an data_centers resource by ID
+
+**Params**: na
+
+#### PUT  /api/v2/data_centers/:id(.json)
+
+**Summary**: Update a data_centers resource by ID
+
+**Params**: na
+
+#### DELETE  /api/v2/data_centers/:id(.json)
+
+**Summary**: Delete a data_centers resource by ID
+
+**Params**: na
+
+****************************************************************
+
+## floors
+
+### Overview
+
+	DELETE /api/v2/floors/:id(.json)                             
+	PUT    /api/v2/floors/:id(.json)                             
+	GET    /api/v2/floors/:id(.json)                             
+	POST   /api/v2/floors(.json)                                 
+	GET    /api/v2/floors(.json)                                 
+	PUT    /api/v2/floors/:id/move_to(.json)                     
+	GET    /api/v2/floors/:id/siblings(.json)                    
+	GET    /api/v2/floors/:id/descendants(.json)                 
+	GET    /api/v2/floors/:id/children(.json)                    
+
+### JSON
+
+    {"floor":{
+        "id":2,
+        "name":"Floor for 192 subnet",
+        "external_key":"Floor -- 2",
+        "capacity":1.618
+    }}
+
+### Details
+
+#### GET  /api/v2/floors/:id/children(.json)
+
+**Summary**: Retrieve the children of the resource
+
+**Params**: na
+
+#### GET  /api/v2/floors/:id/descendants(.json)
+
+**Summary**: Retrieve the descendants of the resource
+
+**Params**: na
+
+#### GET  /api/v2/floors/:id/siblings(.json)
+
+**Summary**: Retrieve the siblings of the resource
+
+**Params**: na
+
+#### PUT  /api/v2/floors/:id/move_to(.json)
+
+**Summary**: Move the resource to another location in the data center
+
+**Params**: na
+
+#### GET  /api/v2/floors(.json)
+
+**Summary**: Retrieve a list of all floors
+
+**Params**: na
+
+#### POST  /api/v2/floors(.json)
+
+**Summary**: Create a new floors resource
+
+**Params**: na
+
+#### GET  /api/v2/floors/:id(.json)
+
+**Summary**: Retrieve an floors resource by ID
+
+**Params**: na
+
+#### PUT  /api/v2/floors/:id(.json)
+
+**Summary**: Update a floors resource by ID
+
+**Params**: na
+
+#### DELETE  /api/v2/floors/:id(.json)
+
+**Summary**: Delete a floors resource by ID
+
+**Params**: na
 
 ****************************************************************
 
@@ -1848,49 +1779,41 @@
 	GET    /api/v2/rooms/:id/siblings(.json)                     
 	GET    /api/v2/rooms/:id/descendants(.json)                  
 	GET    /api/v2/rooms/:id/children(.json)                     
-	DELETE /api/v2/rooms/:id(.json)                              
-	PUT    /api/v2/rooms/:id(.json)                              
-	GET    /api/v2/rooms/:id(.json)                              
-	POST   /api/v2/rooms(.json)                                  
-	GET    /api/v2/rooms(.json)                                  
-	PUT    /api/v2/rooms/:id/move_to(.json)                      
-	GET    /api/v2/rooms/:id/siblings(.json)                     
-	GET    /api/v2/rooms/:id/descendants(.json)                  
-	GET    /api/v2/rooms/:id/children(.json)                     
+
+### JSON
+
+    {"room":{
+        "id":2,
+        "name":"Room for 192 subnet",
+        "external_key":"Room -- 2",
+        "capacity": 1.618
+    }}
 
 ### Details
 
 #### GET  /api/v2/rooms/:id/children(.json)
 
-**Summary**: 
+**Summary**: Retrieve the children of the resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/rooms/:id/descendants(.json)
 
-**Summary**: 
+**Summary**: Retrieve the descendants of the resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/rooms/:id/siblings(.json)
 
-**Summary**: 
+**Summary**: Retrieve the siblings of the resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### PUT  /api/v2/rooms/:id/move_to(.json)
 
-**Summary**: 
+**Summary**: Move the resource to another location in the data center
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/rooms(.json)
 
@@ -1898,7 +1821,7 @@
 
 **Params**: na
 
-**JSON**:
+**Example (response)**:
 
     {"rooms":[
         {
@@ -1917,11 +1840,9 @@
 
 #### POST  /api/v2/rooms(.json)
 
-**Summary**: Create a new rooms
+**Summary**: Create a new rooms resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/rooms/:id(.json)
 
@@ -1929,30 +1850,17 @@
 
 **Params**: na
 
-**JSON**:
-
-    {"room":{
-        "id":2,
-        "name":"Room for 192 subnet",
-        "external_key":"Room -- 2",
-        "capacity": 1.618
-    }}
-
 #### PUT  /api/v2/rooms/:id(.json)
 
 **Summary**: Update a rooms resource by ID
 
 **Params**: na
 
-**JSON**: {}
-
 #### DELETE  /api/v2/rooms/:id(.json)
 
 **Summary**: Delete a rooms resource by ID
 
 **Params**: na
-
-**JSON**: {}
 
 ****************************************************************
 
@@ -1969,49 +1877,41 @@
 	GET    /api/v2/rows/:id/siblings(.json)                      
 	GET    /api/v2/rows/:id/descendants(.json)                   
 	GET    /api/v2/rows/:id/children(.json)                      
-	DELETE /api/v2/rows/:id(.json)                               
-	PUT    /api/v2/rows/:id(.json)                               
-	GET    /api/v2/rows/:id(.json)                               
-	POST   /api/v2/rows(.json)                                   
-	GET    /api/v2/rows(.json)                                   
-	PUT    /api/v2/rows/:id/move_to(.json)                       
-	GET    /api/v2/rows/:id/siblings(.json)                      
-	GET    /api/v2/rows/:id/descendants(.json)                   
-	GET    /api/v2/rows/:id/children(.json)                      
+
+### JSON
+
+    {"row":{
+        "id":2,
+        "name":"Row for 192.168.42 subnet",
+        "external_key":"Row -- 2",
+        "capacity":1.618
+    }}
 
 ### Details
 
 #### GET  /api/v2/rows/:id/children(.json)
 
-**Summary**: 
+**Summary**: Retrieve the children of the resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/rows/:id/descendants(.json)
 
-**Summary**: 
+**Summary**: Retrieve the descendants of the resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/rows/:id/siblings(.json)
 
-**Summary**: 
+**Summary**: Retrieve the siblings of the resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### PUT  /api/v2/rows/:id/move_to(.json)
 
-**Summary**: 
+**Summary**: Move the resource to another location in the data center
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/rows(.json)
 
@@ -2019,7 +1919,7 @@
 
 **Params**: na
 
-**JSON**:
+**Example (response)**:
 
     {"rows":[
         {
@@ -2056,11 +1956,9 @@
 
 #### POST  /api/v2/rows(.json)
 
-**Summary**: Create a new rows
+**Summary**: Create a new rows resource
 
 **Params**: na
-
-**JSON**: {}
 
 #### GET  /api/v2/rows/:id(.json)
 
@@ -2068,27 +1966,14 @@
 
 **Params**: na
 
-**JSON**:
-
-    {"row":{
-        "id":2,
-        "name":"Row for 192.168.42 subnet",
-        "external_key":"Row -- 2",
-        "capacity":1.618
-    }}
-
 #### PUT  /api/v2/rows/:id(.json)
 
 **Summary**: Update a rows resource by ID
 
 **Params**: na
 
-**JSON**: {}
-
 #### DELETE  /api/v2/rows/:id(.json)
 
 **Summary**: Delete a rows resource by ID
 
 **Params**: na
-
-**JSON**: {}
