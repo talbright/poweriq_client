@@ -61,6 +61,11 @@ module PowerIQ
   end
    
   class Device < EdmResource
-  end  
+    resource_accessor :name, :customer, :device_type, :power_rating, :decommissioned, :custom_field_1, :custom_field_2,
+        :external_key, :enable_graceful_shutdown, :ip_address, :shutdown_command_id, :shutdown_wait, :asset_tag_id
+    def children; raise StandardError.new("not implemented") end
+    def descendants; raise StandardError.new("not implemented") end
+    def siblings; raise StandardError.new("not implemented") end
+  end
   
 end

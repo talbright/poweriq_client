@@ -458,6 +458,18 @@
 	GET    /api/v2/outlets/:outlet_id/readings(.json)            
 	GET    /api/v2/outlets/:outlet_id/events(.json)              
 
+### JSON
+
+    {"outlet":{
+        "id":309,
+        "outlet_id":3,
+        "outlet_name":"Outlet 3",
+        "device_id":269,
+        "state":"ON",
+        "pdu_id":51,
+        "reading":{}
+    }}
+
 ### Details
 
 #### GET  /api/v2/outlets/:outlet_id/events(.json)
