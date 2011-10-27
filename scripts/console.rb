@@ -16,7 +16,7 @@ logger.level = Logger::DEBUG
 #  }
 
 PowerIQ.configure do |config|
-  config.endpoint = ResourceAction::Endpoint.new("https://vm148/api/v2","admin","raritan")
+  config.endpoint = ResourceAction::Endpoint.new("https://vm163/api/v2","admin","raritan")
   config.logger = logger
 end
 

@@ -92,7 +92,7 @@ module ResourceAction
         options = {
           :username => @resource.endpoint.user,
           :password => @resource.endpoint.password,
-          :headers => { "Content-Type" => "application/json" },
+          :headers => { "Content-Type" => "application/json", "Accept" => "application/json" },
           :user_agent => "PowerIQ Client",
           :disable_ssl_peer_verification => true }
         Typhoeus::Request.new(@url,options)
