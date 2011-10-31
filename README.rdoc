@@ -1,6 +1,6 @@
 = poweriq_client
 
-Description goes here.
+Power IQ Rest API client for Power IQ 3.1
 
 == Contributing to poweriq_client
  
