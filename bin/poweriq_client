@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'rubygems'
+require 'poweriq_client'
+require 'irb'
+require 'irb/completion'
+
+if File.exists? ".irbrc"
+  ENV['IRBRC'] = ".irbrc"
+end
+begin
+  config = YAML.load(File.read(ENV['HOME'] + "/.poweriq_client"))
+  if(config && config.has_key?("default"))
+    PowerIQ::Resource::Base.endpoint = config["default"]["endpoint"]
+    PowerIQ::Resource::Base.user = config["default"]["user"]
+    PowerIQ::Resource::Base.password = config["default"]["password"]
+  end
+rescue
+end
+
+ARGV.clear
+IRB.start
+
+exit!

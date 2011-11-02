@@ -1,6 +1,8 @@
 source :rubygems
 
 gem "rest-client"
+gem "awesome_print"
+gem "activesupport", "3.0.9"
 
 group :development do
   gem "rspec", "~> 2.3.0"
