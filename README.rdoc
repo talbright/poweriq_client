@@ -4,17 +4,55 @@ Power IQ Rest API client for Power IQ 3.1
 
 == Installation
 
-% gem install poweriq_client
+ % gem install poweriq_client
 
-== Running
+== Console
 
-== Development API
+The Power IQ client comes with a interactive console. To run the console:
+
+ % poweriq_client
+
+=== Configuration
+
+Create a file named .poweriq_client in your home directory. The contents of the file
+should look similiar to below, adjusted to your Power IQ server:
+
+ default:
+   host: vm163
+   user: admin
+   password: raritan
+
+If you do not use a configuration file you'll need to provide the configuration manually:
+
+  % poweriq_client
+  >> PowerIQ::Configuration.configure("user"=>"foo","password"=>"bar","host"=>"vm150")
+
+=== Examples
+
+Retrieve all outlets:
+  >> outlets_resource = PowerIQ::Resource::Outlet.new
+  https://vm163/api/v2/outlets
+  >> outlets_resource.get
+  
+Retrieve one outlet:
+  >> outlet_resource = PowerIQ::Resource::Outlet.new('/381')
+  https://vm163/api/v2/outlets/381
+  >> outlet = outlet_resource.get
+
+Update an outlet:
+  >> outlet_resource = PowerIQ::Resource::Outlet.new('/381')
+  https://vm163/api/v2/outlets/381
+  >> outlet = outlet_resource.get
+  >> outlet['outlet']['outlet_name'] = "New Name"
+  >> outlet_resource.put outlet.to_json
+
+== Development
 
 The Power IQ rest client uses the rest-client gem, with some
 modifications to make it easier to query Power IQ resources.
 For now you'll need to view the source code for more details,
-however the usage is essentially the same as you would use
-in the interactive console.
+however the usage is essentially the same as you see in the
+interactive console examples above.
 
 == Contributing to Power IQ Client
  
