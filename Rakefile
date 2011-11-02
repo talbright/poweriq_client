@@ -1,7 +1,8 @@
 # encoding: utf-8
-
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), 'lib')
 require 'rubygems'
 require 'bundler'
+require 'poweriq_client'
 begin
   Bundler.setup(:default, :development)
 rescue Bundler::BundlerError => e
@@ -17,11 +18,11 @@ Jeweler::Tasks.new do |gem|
   gem.name = "poweriq_client"
   gem.homepage = "http://github.com/talbright/poweriq_client"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
-  gem.email = "trent.albright@gmail.com"
+  gem.summary = %Q{Power IQ Rest API client for Power IQ 3.1}
+  gem.description = %Q{Power IQ Rest API client for Power IQ 3.1}
+  gem.email = "trent.albright@raritan.com"
   gem.authors = ["Trent Albright"]
-  # dependencies defined in Gemfile
+  gem.version = PowerIQ::Version::STRING
 end
 Jeweler::RubygemsDotOrgTasks.new
 
