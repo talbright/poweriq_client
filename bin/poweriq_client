@@ -1,0 +1,21 @@
+#!/usr/bin/env ruby
+
+$LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+
+require 'rubygems'
+require 'poweriq_client'
+require 'irb'
+require 'irb/completion'
+
+if File.exists? ".irbrc"
+  ENV['IRBRC'] = ".irbrc"
+end
+begin
+  PowerIQ::Configuration.load_configuration("default")
+rescue
+end
+
+ARGV.clear
+IRB.start
+
+exit!
