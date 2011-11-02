@@ -14,6 +14,6 @@ Power IQ Rest API client for Power IQ 3.1
 
 == Copyright
 
-Copyright (c) 2011 Trent Albright. See LICENSE.txt for
+Copyright (c) 2011 Ratian, INC. See LICENSE.txt for
 further details.
 
