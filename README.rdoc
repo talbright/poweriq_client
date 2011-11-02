@@ -1,8 +1,22 @@
-= poweriq_client
+= Power IQ Client
 
 Power IQ Rest API client for Power IQ 3.1
 
-== Contributing to poweriq_client
+== Installation
+
+% gem install poweriq_client
+
+== Running
+
+== Development API
+
+The Power IQ rest client uses the rest-client gem, with some
+modifications to make it easier to query Power IQ resources.
+For now you'll need to view the source code for more details,
+however the usage is essentially the same as you would use
+in the interactive console.
+
+== Contributing to Power IQ Client
  
 * Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
 * Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
