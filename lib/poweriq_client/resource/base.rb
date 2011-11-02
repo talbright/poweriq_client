@@ -4,7 +4,7 @@ module PowerIQ
   module Resource
 
     module ResponseHandler
-      def self.handler(resource)
+      def self.create(resource)
         Proc.new { |response,request,result,&block|
           resource.request = request
           resource.response = response
@@ -20,8 +20,6 @@ module PowerIQ
 
       attr_accessor :request,:response
 
-      include ActiveModel::Serializers::JSON
-
       def initialize(url=nil,options={}, backwards_compatibility=nil, &block)
         base_headers = { :content_type => 'application/json', :accept=>'application/json' }
         if(options.has_key?(:headers))
@@ -32,7 +30,7 @@ module PowerIQ
         options[:user] = self.class.user unless(options.has_key?(:user))
         options[:password] = self.class.password unless(options.has_key?(:password))
         unless(block_given?)
-          block = ResponseHandler.handler(self)
+          block = ResponseHandler.create(self)
         end
         modified_url = if(url.nil?)
           self.class.resource_url
@@ -41,17 +39,16 @@ module PowerIQ
         else
           self.class.resource_url + url
         end
-        puts "modified url: #{modified_url} (#{url})"
         super(modified_url,options,backwards_compatibility,&block)
       end
 
       class << self
-        attr_writer :endpoint,:singular,:user,:password
-        def endpoint
+        attr_writer :host,:singular,:user,:password
+        def host
           if(self == Base)
-            @endpoint
+            @host
           else
-            @endpoint || Base.endpoint
+            @host || Base.host
           end
         end
         def user
@@ -76,7 +73,7 @@ module PowerIQ
           base.underscore
         end
         def resource_url
-          "https://#{self.endpoint}/api/v2/#{self.resource_name(!self.singular?)}"
+          "https://#{self.host}/api/v2/#{self.resource_name(!self.singular?)}"
         end
         def singular?
           @singular
