@@ -15,7 +15,9 @@ The Power IQ client comes with a interactive console. To run the console:
 
 ==== Console Options
 
- --pollute      less typing by mapping PowerIQ::Resource::* to global namespace (PowerIQ::Resource::Outlet => Outlet)
+ Usage: poweriq_client [options]
+    -l, --less-typing                Put resource objects in global namespace (ie PowerIQ::Resource::Outlet becomes Outlet)
+    -c, --check-compatability        Check client compatibility with server
 
 ==== Console Configuration
 
@@ -71,6 +73,6 @@ interactive console examples above.
 
 == Copyright
 
-Copyright (c) 2011 Ratian, INC. See LICENSE.txt for
+Copyright (c) 2011 Raritan, INC. See LICENSE.txt for
 further details.
 

@@ -3,9 +3,21 @@
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 
 require 'rubygems'
+require 'optparse'
 require 'poweriq_client'
 require 'irb'
 require 'irb/completion'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: poweriq_client [options]"
+  opts.on("-l", "--less-typing", "Put resource objects in global namespace (ie PowerIQ::Resource::Outlet becomes Outlet)") do |l|
+    options[:less_typing] = l
+  end
+  opts.on("-c", "--check-compatability", "Check client compatibility with server") do |c|
+    options[:check_compatability] = c
+  end
+end.parse!
 
 if File.exists? ".irbrc"
   ENV['IRBRC'] = ".irbrc"
@@ -15,7 +27,7 @@ begin
 rescue
 end
 
-def pollute
+def less_typing
   resources = Dir.entries(File.join(File.dirname(__FILE__), '..', 'lib','poweriq_client','resource')).select { |x| x=~%r{\.rb$} }
   resources.each { |r| load File.join(File.dirname(__FILE__), '..', 'lib','poweriq_client','resource',r) }
   classes = ObjectSpace.each_object(Class).map { |x| x.to_s}.select { |x| x=~/PowerIQ::Resource/ }.reject { |x| x=~/Base$/ }
@@ -24,8 +36,19 @@ def pollute
   }
 end
 
-pollute_os = ARGV.find { |x| x=="--pollute" }
-pollute if(pollute_os)
+def check_compatability
+  client_version = PowerIQ::Compatibility.client_version
+  server_version = PowerIQ::Compatibility.server_version
+  unless(PowerIQ::Compatibility.compatible?)
+    raise Error.new("This client (#{client_version}) is not supported by your version of Power IQ (#{server_version})")
+  else
+    puts "This client (#{client_version}) is supported by your version of Power IQ (#{server_version})"
+  end
+end
+
+check_compatability if(options[:check_compatability])
+less_typing if(options[:less_typing])
+
 ARGV.clear
 IRB.start
 
