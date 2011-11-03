@@ -15,6 +15,17 @@ begin
 rescue
 end
 
+def pollute
+  resources = Dir.entries(File.join(File.dirname(__FILE__), '..', 'lib','poweriq_client','resource')).select { |x| x=~%r{\.rb$} }
+  resources.each { |r| load File.join(File.dirname(__FILE__), '..', 'lib','poweriq_client','resource',r) }
+  classes = ObjectSpace.each_object(Class).map { |x| x.to_s}.select { |x| x=~/PowerIQ::Resource/ }.reject { |x| x=~/Base$/ }
+  classes.each { |c|
+    Object.const_set(c.demodulize,c.constantize)
+  }
+end
+
+pollute_os = ARGV.find { |x| x=="--pollute" }
+pollute if(pollute_os)
 ARGV.clear
 IRB.start
 
