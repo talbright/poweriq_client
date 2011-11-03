@@ -11,20 +11,33 @@ require 'irb/completion'
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: poweriq_client [options]"
-  opts.on("-l", "--less-typing", "Put resource objects in global namespace (ie PowerIQ::Resource::Outlet becomes Outlet)") do |l|
+  opts.on("-l", "--less-typing", "Put resource objects in global namespace","(ie PowerIQ::Resource::Outlet becomes Outlet)") do |l|
     options[:less_typing] = l
   end
-  opts.on("-c", "--check-compatability", "Check client compatibility with server") do |c|
+  opts.on("-c", "--check-compatibility", "Check client compatibility with server") do |c|
     options[:check_compatability] = c
+  end
+  opts.on("-u", "--user [USER]", "User name for authentication") do |u|
+    options[:user] = u
+  end
+  opts.on("-p", "--password [PASSWORD]", "Password for authentication") do |p|
+    options[:password] = p
+  end
+  opts.on("-s", "--server [HOST]", "Host name or IP of Power IQ") do |h|
+    options[:host] = h
   end
 end.parse!
 
 if File.exists? ".irbrc"
   ENV['IRBRC'] = ".irbrc"
 end
-begin
-  PowerIQ::Configuration.load_configuration("default")
-rescue
+unless(options[:user] || options[:password] || options[:host])
+  begin
+    PowerIQ::Configuration.load_configuration("default")
+  rescue
+  end
+else
+  PowerIQ::Configuration.configure(options)
 end
 
 def less_typing
