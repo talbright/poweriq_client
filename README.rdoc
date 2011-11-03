@@ -1,10 +1,7 @@
 = Power IQ Client
 
-Power IQ Rest API client for Power IQ 3.1. This is an initial release of the client, and only
-two resources are directly available:
-
-* Outlet
-* SystemInfo
+Power IQ Rest API client for Power IQ 3.1. For a complete list of resources, routes, and methods available
+see the online Power IQ documentation (http://www.raritan.com/support/power-iq).
 
 == Installation
 
@@ -16,7 +13,17 @@ The Power IQ client comes with a interactive console. To run the console:
 
  % poweriq_client
 
-=== Configuration
+==== Console Options
+
+  Usage: poweriq_client [options]
+    -l, --less-typing                Put resource objects in global namespace
+                                     (ie PowerIQ::Resource::Outlet becomes Outlet)
+    -c, --check-compatibility        Check client compatibility with server
+    -u, --user [USER]                User name for authentication
+    -p, --password [PASSWORD]        Password for authentication
+    -s, --server [HOST]              Host name or IP of Power IQ
+
+==== Console Configuration
 
 Create a file named .poweriq_client in your home directory. The contents of the file
 should look similiar to below, adjusted to your Power IQ server:
@@ -26,12 +33,13 @@ should look similiar to below, adjusted to your Power IQ server:
    user: admin
    password: raritan
 
-If you do not use a configuration file you'll need to provide the configuration manually:
+If you do not use a configuration file, or through the command line options above, you'll
+need to provide the configuration manually:
 
   % poweriq_client
   >> PowerIQ::Configuration.configure("user"=>"foo","password"=>"bar","host"=>"vm150")
 
-=== Examples
+==== Console Examples
 
 Retrieve all outlets:
   >> outlets_resource = PowerIQ::Resource::Outlet.new
@@ -70,6 +78,5 @@ interactive console examples above.
 
 == Copyright
 
-Copyright (c) 2011 Ratian, INC. See LICENSE.txt for
+Copyright (c) 2011 Raritan, INC. See LICENSE.txt for
 further details.
-

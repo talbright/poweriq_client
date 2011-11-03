@@ -10,9 +10,10 @@ module PowerIQ
       end
       def configure(options=nil,&block)
         unless(options.nil?)
-          self.user = options["user"]
-          self.password = options["password"]
-          self.host = options["host"]
+          options.symbolize_keys!
+          self.user = options[:user]
+          self.password = options[:password]
+          self.host = options[:host]
         end
         if(block_given?)
           yield self
