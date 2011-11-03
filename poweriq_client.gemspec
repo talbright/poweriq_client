@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{poweriq_client}
-  s.version = "0.1.1"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Trent Albright}]
-  s.date = %q{2011-11-02}
+  s.date = %q{2011-11-03}
   s.description = %q{Power IQ Rest API client for Power IQ 3.1}
   s.email = %q{trent.albright@raritan.com}
   s.executables = [%q{poweriq_client}]
@@ -28,10 +28,33 @@ Gem::Specification.new do |s|
     "Rakefile",
     "bin/poweriq_client",
     "lib/poweriq_client.rb",
+    "lib/poweriq_client/compatibility.rb",
     "lib/poweriq_client/configuration.rb",
     "lib/poweriq_client/resource.rb",
+    "lib/poweriq_client/resource/aisle.rb",
+    "lib/poweriq_client/resource/asset_strip.rb",
     "lib/poweriq_client/resource/base.rb",
+    "lib/poweriq_client/resource/circuit_breaker_reading.rb",
+    "lib/poweriq_client/resource/circuit_breaker_readings_rollup.rb",
+    "lib/poweriq_client/resource/data_center.rb",
+    "lib/poweriq_client/resource/device.rb",
+    "lib/poweriq_client/resource/event.rb",
+    "lib/poweriq_client/resource/floor.rb",
+    "lib/poweriq_client/resource/job.rb",
+    "lib/poweriq_client/resource/job_message.rb",
+    "lib/poweriq_client/resource/line_reading.rb",
+    "lib/poweriq_client/resource/line_readings_rollup.rb",
     "lib/poweriq_client/resource/outlet.rb",
+    "lib/poweriq_client/resource/outlet_reading.rb",
+    "lib/poweriq_client/resource/outlet_readings_rollup.rb",
+    "lib/poweriq_client/resource/pdu.rb",
+    "lib/poweriq_client/resource/rack.rb",
+    "lib/poweriq_client/resource/rack_unit.rb",
+    "lib/poweriq_client/resource/room.rb",
+    "lib/poweriq_client/resource/row.rb",
+    "lib/poweriq_client/resource/sensor.rb",
+    "lib/poweriq_client/resource/sensor_reading.rb",
+    "lib/poweriq_client/resource/sensor_readings_rollup.rb",
     "lib/poweriq_client/resource/system_info.rb",
     "lib/poweriq_client/version.rb",
     "poweriq_client.gemspec",
