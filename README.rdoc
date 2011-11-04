@@ -23,7 +23,7 @@ The Power IQ client comes with a interactive console. To run the console:
     -p, --password [PASSWORD]        Password for authentication
     -s, --server [HOST]              Host name or IP of Power IQ
 
-==== Console Configuration
+==== Configuration
 
 Create a file named .poweriq_client in your home directory. The contents of the file
 should look similiar to below, adjusted to your Power IQ server:
@@ -33,13 +33,13 @@ should look similiar to below, adjusted to your Power IQ server:
    user: admin
    password: raritan
 
-If you do not use a configuration file, or through the command line options above, you'll
+If you do not use a configuration file, or the command line options above, you'll
 need to provide the configuration manually:
 
   % poweriq_client
   >> PowerIQ::Configuration.configure("user"=>"foo","password"=>"bar","host"=>"vm150")
 
-==== Console Examples
+==== Examples
 
 Retrieve all outlets:
   >> outlets_resource = PowerIQ::Resource::Outlet.new
