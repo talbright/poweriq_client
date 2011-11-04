@@ -8,10 +8,8 @@ module PowerIQ
         Proc.new { |response,request,result,&block|
           resource.request = request
           resource.response = response
-          body = response.return!(request, result, &block)
-          if(body.kind_of?(String))
-            ActiveSupport::JSON.decode(body)
-          end
+          response.return!(request, result, &block)
+          response.json
         }
       end
     end
