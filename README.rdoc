@@ -23,7 +23,7 @@ The Power IQ client comes with a interactive console. To run the console:
     -p, --password [PASSWORD]        Password for authentication
     -s, --server [HOST]              Host name or IP of Power IQ
 
-==== Console Configuration
+==== Configuration
 
 Create a file named .poweriq_client in your home directory. The contents of the file
 should look similiar to below, adjusted to your Power IQ server:
@@ -33,13 +33,13 @@ should look similiar to below, adjusted to your Power IQ server:
    user: admin
    password: raritan
 
-If you do not use a configuration file, or through the command line options above, you'll
+If you do not use a configuration file, or the command line options above, you'll
 need to provide the configuration manually:
 
   % poweriq_client
   >> PowerIQ::Configuration.configure("user"=>"foo","password"=>"bar","host"=>"vm150")
 
-==== Console Examples
+==== Examples
 
 Retrieve all outlets:
   >> outlets_resource = PowerIQ::Resource::Outlet.new
@@ -57,6 +57,93 @@ Update an outlet:
   >> outlet = outlet_resource.get
   >> outlet['outlet']['outlet_name'] = "New Name"
   >> outlet_resource.put outlet.to_json
+
+=== Error Handling
+
+When an error occurs with API calls, the Power IQ server will return an appropriate HTTP response code, and include
+a json response with error details. On the client side, an exception is thrown. Either the exception or the
+resource object can be used to reveal details about what went wrong:
+
+  >> outlet_resource = PowerIQ::Resource::Outlet.new('/381')
+  https://vm163/api/v2/outlets/381
+  >> outlet_json = outlet_resource.get
+  {
+    "outlet" => {
+                 "id" => 381,
+          "outlet_id" => 11,
+        "outlet_name" => "Outlet 11",
+          "device_id" => nil,
+              "state" => "ON",
+             "pdu_id" => 40,
+            "reading" => {}
+    }
+  }
+  >> outlet_json['outlet']['outlet_name']="foo"
+  "foo"
+  >> outlet_resource.put outlet_json.to_json
+  RestClient::UnprocessableEntity: 422 Unprocessable Entity
+        from /Users/tba/.rvm/gems/ruby-1.9.2-p180@poweriq_client/gems/rest-client-1.6.7/lib/restclient/abstract_response.rb:48:in `return!'
+        from /Users/tba/Workspaces/local/poweriq_client/lib/poweriq_client/resource/base.rb:11:in `block in create'
+        from /Users/tba/.rvm/gems/ruby-1.9.2-p180@poweriq_client/gems/rest-client-1.6.7/lib/restclient/request.rb:228:in `call'
+        from /Users/tba/.rvm/gems/ruby-1.9.2-p180@poweriq_client/gems/rest-client-1.6.7/lib/restclient/request.rb:228:in `process_result'
+        from /Users/tba/.rvm/gems/ruby-1.9.2-p180@poweriq_client/gems/rest-client-1.6.7/lib/restclient/request.rb:178:in `block in transmit'
+        from /Users/tba/.rvm/rubies/ruby-1.9.2-p180/lib/ruby/1.9.1/net/http.rb:627:in `start'
+        from /Users/tba/.rvm/gems/ruby-1.9.2-p180@poweriq_client/gems/rest-client-1.6.7/lib/restclient/request.rb:172:in `transmit'
+        from /Users/tba/.rvm/gems/ruby-1.9.2-p180@poweriq_client/gems/rest-client-1.6.7/lib/restclient/request.rb:64:in `execute'
+        from /Users/tba/.rvm/gems/ruby-1.9.2-p180@poweriq_client/gems/rest-client-1.6.7/lib/restclient/request.rb:33:in `execute'
+        from /Users/tba/.rvm/gems/ruby-1.9.2-p180@poweriq_client/gems/rest-client-1.6.7/lib/restclient/resource.rb:76:in `put'
+        from (irb):4
+        from bin/poweriq_client:66:in `<main>'
+
+The resource will always hold the last response from the latest rest invocation:
+
+  >> outlet_resource.response.json
+  {
+       "error" => "Job::JobError",
+    "messages" => [
+        [0] "Job(ID:5) with 1 error(s) and status COMPLETED completed",
+        [1] "Confirmed existence of foo",
+        [2] "Confirmed existence of 192.168.45.234 for outlet  foo.",
+        [3] "Retrieved plugin for 192.168.45.234.",
+        [4] "Failed to set outlet id: 381 label on PDU 192.168.45.234.  PowerIQ was unable to reach 192.168.45.234."
+    ],
+         "job" => {
+        "description" => nil,
+           "end_time" => "2011/11/06 00:56:47 +0000",
+         "has_errors" => true,
+                 "id" => 5,
+         "start_time" => "2011/11/06 00:56:28 +0000",
+             "status" => "COMPLETED",
+            "user_id" => 1
+    },
+       "trace" => "/var/oculan/home/tba/rails/src/lib/messaging/job_polling.rb:31:...."
+   }
+
+You can also catch the exception, and the exception will have the response object in it:
+
+  >> exc = nil
+  >> begin outlet_resource.put outlet_json.to_json; rescue => exc; end
+  >> exc.response.json
+  {
+       "error" => "Job::JobError",
+    "messages" => [
+        [0] "Job(ID:5) with 1 error(s) and status COMPLETED completed",
+        [1] "Confirmed existence of foo",
+        [2] "Confirmed existence of 192.168.45.234 for outlet  foo.",
+        [3] "Retrieved plugin for 192.168.45.234.",
+        [4] "Failed to set outlet id: 381 label on PDU 192.168.45.234.  PowerIQ was unable to reach 192.168.45.234."
+    ],
+         "job" => {
+        "description" => nil,
+           "end_time" => "2011/11/06 00:56:47 +0000",
+         "has_errors" => true,
+                 "id" => 5,
+         "start_time" => "2011/11/06 00:56:28 +0000",
+             "status" => "COMPLETED",
+            "user_id" => 1
+    },
+       "trace" => "/var/oculan/home/tba/rails/src/lib/messaging/job_polling.rb:31:...."
+   }
 
 == Development
 

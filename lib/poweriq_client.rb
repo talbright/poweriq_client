@@ -1,5 +1,6 @@
 
 require 'active_support/core_ext'
+require 'poweriq_client/response'
 
 module PowerIQ
   autoload :Version, "poweriq_client/version"
