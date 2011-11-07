@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{poweriq_client}
-  s.version = "0.3.0"
+  s.version = "0.4.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = [%q{Trent Albright}]
-  s.date = %q{2011-11-06}
+  s.date = %q{2011-11-07}
   s.description = %q{Power IQ Rest API client for Power IQ 3.1}
   s.email = %q{trent.albright@raritan.com}
   s.executables = [%q{poweriq_client}]
