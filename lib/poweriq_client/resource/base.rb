@@ -3,6 +3,14 @@ require 'rest_client'
 module PowerIQ
   module Resource
 
+    class ResourceError < StandardError
+      attr_accessor :resource
+      def initialize(msg=nil,resource=nil)
+        super(msg)
+        self.resource = resource
+      end
+    end
+
     module ResponseHandler
       def self.create(resource)
         Proc.new { |response,request,result,&block|
@@ -42,6 +50,7 @@ module PowerIQ
 
       class << self
         attr_writer :host,:singular,:user,:password
+
         def host
           if(self == Base)
             @host
@@ -49,6 +58,7 @@ module PowerIQ
             @host || Base.host
           end
         end
+
         def user
           if(self == Base)
             @user
@@ -56,6 +66,7 @@ module PowerIQ
             @user || Base.user
           end
         end
+
         def password
           if(self == Base)
             @password
@@ -63,6 +74,7 @@ module PowerIQ
             @password || Base.password
           end
         end
+
         def resource_name(pluralize=false)
           base = self.name.demodulize
           if(pluralize)
@@ -70,14 +82,41 @@ module PowerIQ
           end
           base.underscore
         end
+
         def resource_url
           "https://#{self.host}/api/v2/#{self.resource_name(!self.singular?)}"
         end
+
         def singular?
           @singular
         end
-
       end
+
+      def root_key(collection=false)
+        self.class.resource_name(collection)
+      end
+
+      def member?
+        !!url.match(%r{#{self.class.resource_url}/\d+$})
+      end
+
+      def json_available?
+        self.response && self.response.json && !self.response.json.empty? && self.response.json.has_key?(self.root_key)
+      end
+
+      protected
+
+        def require_json!
+          unless(json_available?)
+            raise ResourceError.new("JSON response required. Did you GET the resource first?",self)
+          end
+        end
+
+        def require_member!
+          unless(member?)
+            raise ResourceError.new("Member resource required. Not a valid member resource specifier: #{url}",self)
+          end
+        end
 
     end
   end

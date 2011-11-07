@@ -9,11 +9,12 @@ see the online Power IQ documentation (http://www.raritan.com/support/power-iq).
 
 == Console
 
-The Power IQ client comes with a interactive console. To run the console:
+The Power IQ client comes with a interactive console. From the console you can make REST API calls to Power IQ.
+To run the console:
 
  % poweriq_client
 
-==== Console Options
+==== Options
 
   Usage: poweriq_client [options]
     -l, --less-typing                Put resource objects in global namespace
@@ -25,7 +26,7 @@ The Power IQ client comes with a interactive console. To run the console:
 
 ==== Configuration
 
-Create a file named .poweriq_client in your home directory. The contents of the file
+Create the file $HOME/.poweriq_client. The contents of the file
 should look similiar to below, adjusted to your Power IQ server:
 
  default:
@@ -39,28 +40,31 @@ need to provide the configuration manually:
   % poweriq_client
   >> PowerIQ::Configuration.configure("user"=>"foo","password"=>"bar","host"=>"vm150")
 
-==== Examples
+== Examples
+
+Start the client console:
+  % poweriq_client -u admin -p raritan -s vm163
 
 Retrieve all outlets:
   >> outlets_resource = PowerIQ::Resource::Outlet.new
   https://vm163/api/v2/outlets
-  >> outlets_resource.get
+  >> outlets_json = outlets_resource.get
   
 Retrieve one outlet:
   >> outlet_resource = PowerIQ::Resource::Outlet.new('/381')
   https://vm163/api/v2/outlets/381
-  >> outlet = outlet_resource.get
+  >> outlet_json = outlet_resource.get
 
 Update an outlet:
   >> outlet_resource = PowerIQ::Resource::Outlet.new('/381')
   https://vm163/api/v2/outlets/381
-  >> outlet = outlet_resource.get
-  >> outlet['outlet']['outlet_name'] = "New Name"
-  >> outlet_resource.put outlet.to_json
+  >> outlet_json = outlet_resource.get
+  >> outlet_json['outlet']['outlet_name'] = "New Name"
+  >> outlet_resource.put outlet_json.to_json
 
-=== Error Handling
+== Error Handling
 
-When an error occurs with API calls, the Power IQ server will return an appropriate HTTP response code, and include
+When an error occurs during an API call, the Power IQ server will return an appropriate HTTP response code, and include
 a json response with error details. On the client side, an exception is thrown. Either the exception or the
 resource object can be used to reveal details about what went wrong:
 
@@ -144,6 +148,95 @@ You can also catch the exception, and the exception will have the response objec
     },
        "trace" => "/var/oculan/home/tba/rails/src/lib/messaging/job_polling.rb:31:...."
    }
+
+== Jobs
+
+Some resource actions will return a Job JSON structure. These actions either will always, or optionally execute
+asynchronously. In order to determine when a job has been completed, the server must be polled for job
+completeness. Methods on the job resource simplify this for you:
+
+  >> job = Job.new('/5')
+  https://vm163/api/v2/jobs/5
+  >> job.poll(:max=>12,:delay=>5)
+  true
+  >> job.response.json
+  {
+             "job" => {
+                      "id" => 5,
+                 "user_id" => 1,
+                  "status" => "COMPLETED",
+             "description" => nil,
+              "start_time" => "2011/11/06 00:56:28 +0000",
+                "end_time" => "2011/11/06 00:56:47 +0000",
+              "has_errors" => true,
+        "percent_complete" => 1.0,
+               "completed" => true,
+            "last_message" => "Failed to set outlet id: 381 label on PDU 192.168.45.234.  PowerIQ was unable to reach 192.168.45.234.",
+             "error_count" => 1
+    },
+    "job_messages" => [
+        [0] {
+                      "id" => 15,
+            "unit_of_work" => 0.25,
+                  "job_id" => 5,
+                   "level" => "INFO",
+                   "trace" => nil,
+              "start_time" => "2011/11/06 00:56:30 +0000",
+                "end_time" => nil,
+             "message_key" => ":magic.outlet_get_outlet_success",
+            "message_vars" => "{\"new_outlet_name\":\"foo\",\"_pdu_outlet_id\":\"381\"}",
+                 "aborted" => false,
+                 "message" => "Confirmed existence of Outlet 11"
+        },
+        [1] {
+                      "id" => 16,
+            "unit_of_work" => 0.25,
+                  "job_id" => 5,
+                   "level" => "INFO",
+                   "trace" => nil,
+              "start_time" => "2011/11/06 00:56:32 +0000",
+                "end_time" => nil,
+             "message_key" => ":magic.outlet_get_pdu_success",
+            "message_vars" => "{\"_pdu_id\":\"40\",\"new_outlet_name\":\"foo\",\"_pdu_outlet_id\":\"381\"}",
+                 "aborted" => false,
+                 "message" => "Confirmed existence of 192.168.45.234 for outlet  Outlet 11."
+        },
+        [2] {
+                      "id" => 17,
+            "unit_of_work" => 0.25,
+                  "job_id" => 5,
+                   "level" => "INFO",
+                   "trace" => nil,
+              "start_time" => "2011/11/06 00:56:34 +0000",
+                "end_time" => nil,
+             "message_key" => ":magic.outlet_get_pdu_metadata_success",
+            "message_vars" => "{\"_pdu_id\":\"40\",\"new_outlet_name\":\"foo\",\"_pdu_outlet_id\":\"381\"}",
+                 "aborted" => false,
+                 "message" => "Retrieved plugin for 192.168.45.234."
+        },
+        [3] {
+                      "id" => 18,
+            "unit_of_work" => 0.25,
+                  "job_id" => 5,
+                   "level" => "ERROR",
+                   "trace" => "SNMP_ERROR_TIMEOUT",
+              "start_time" => "2011/11/06 00:56:47 +0000",
+                "end_time" => nil,
+             "message_key" => ":magic.outlet_rename_snmp_timeout",
+            "message_vars" => "{\"_pdu_id\":\"40\",\"new_outlet_name\":\"foo\",\"_pdu_outlet_id\":\"381\"}",
+                 "aborted" => false,
+                 "message" => "Failed to set outlet id: 381 label on PDU 192.168.45.234.  PowerIQ was unable to reach 192.168.45.234."
+        }
+    ]
+  }
+
+* job.poll(:max=>5,:delay=>10) where :max is the maximum number of times to poll for job completeness, and :delay is the
+amount of seconds to pause between each poll
+* job.poll returns true if the job completed, false otherwise
+* job.poll will also automatically retrieve all job_messages after completion
+
+Please refer to the online Power IQ documentation (http://www.raritan.com/support/power-iq) for a list of resources
+that optionally or require asynchrounous execution.
 
 == Development
 
