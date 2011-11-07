@@ -6,9 +6,10 @@ module PowerIQ
         require_member!
         options.symbolize_keys!
         poll_count = 0
-        unless(completed? || poll_count < options[:max])
+        while(poll_count < options[:max])
           poll_count += 1
           get
+          break if(completed?)
           Kernel.sleep(options[:delay])
         end
         begin

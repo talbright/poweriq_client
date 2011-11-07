@@ -157,22 +157,6 @@ completeness. Methods on the job resource simplify this for you:
 
   >> job = Job.new('/5')
   https://vm163/api/v2/jobs/5
-  >> job.get
-  {
-    "job" => {
-                      "id" => 5,
-                 "user_id" => 1,
-                  "status" => "ACTIVE",
-             "description" => nil,
-              "start_time" => "2011/10/07 14:54:32 +0000",
-                "end_time" => "2011/10/07 14:54:33 +0000",
-              "has_errors" => false,
-        "percent_complete" => .5,
-               "completed" => false,
-            "last_message" => "Job started",
-             "error_count" => 0
-    }
-  }
   >> job.poll(:max=>12,:delay=>5)
   true
   >> job.response.json
