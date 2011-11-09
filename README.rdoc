@@ -149,6 +149,8 @@ You can also catch the exception, and the exception will have the response objec
        "trace" => "/var/oculan/home/tba/rails/src/lib/messaging/job_polling.rb:31:...."
    }
 
+Please note that the "trace" element is only useful when submitting support requests.
+
 == Jobs
 
 Some resource actions will return a Job JSON structure. These actions either will always, or optionally execute
